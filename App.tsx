@@ -2,14 +2,13 @@ import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { Text, View } from "react-native";
 
-import { Card } from "src/component/Card";
+import { BebopperCultivater } from "src/component/BebopperCultivater";
 
 export default function App() {
   return (
-    <View>
-      <Text>aaa</Text>
+    <View style={{ flex: 1, padding: 20 }}>
+      <BebopperCultivater />
       <StatusBar style="auto" />
-      <Card />
     </View>
   );
 }
