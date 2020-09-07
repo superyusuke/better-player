@@ -1,5 +1,5 @@
 import { NoteMetaList, Key } from "src/model/music/base";
-import { convertNoteMetaToMappedNote } from "src/model/music/convert/toMappedNote/convertNoteMetaToMappedNote";
+import { convertNoteMetaToMappedNote } from "src/model/music/convert/toNoteMapped/convertNoteMetaToMappedNote";
 
 type Props = {
   noteMetaList: NoteMetaList;

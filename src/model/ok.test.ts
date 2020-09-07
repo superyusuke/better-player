@@ -1,6 +1,6 @@
 import { NoteMeta, NoteMetaList } from "src/model/music/base";
-import { convertNoteMetaToMappedNote } from "src/model/music/convert/toMappedNote/convertNoteMetaToMappedNote";
-import { convertNoteMetaListToMappedNoteList } from "src/model/music/convert/toMappedNote/convertNoteMetaListToMappedNoteList";
+import { convertNoteMetaToMappedNote } from "src/model/music/convert/toNoteMapped/convertNoteMetaToMappedNote";
+import { convertNoteMetaListToMappedNoteList } from "src/model/music/convert/toNoteMapped/convertNoteMetaListToMappedNoteList";
 
 //
 // const note2: Note = {
