@@ -1,36 +1,4 @@
-export type Key =
-  | "C"
-  | "G"
-  | "D"
-  | "A"
-  | "E"
-  | "B"
-  | "F#"
-  | "C#"
-  | "F"
-  | "Bb"
-  | "Eb"
-  | "Ab"
-  | "Db"
-  | "Gb"
-  | "Cb";
-
-// C G D A E B F# C#
-// C F Bb Eb Ab Db Gb Cb
-// https://people.carleton.edu/~jellinge/m101s12/Pages/13/13KeySignatures.html
-
-export type AccidentalNumber = -1 | 0 | 1;
-export type AccidentalNumberString = "-1" | "0" | "1";
-
-type ScaleTuple = [string, string, string, string, string, string, string];
-
-type KeyList = {
-  [key in Key]: {
-    [accidental in AccidentalNumberString]: ScaleTuple;
-  };
-};
-
-export const KEY_LIST: KeyList = {
+export const KEY_LIST_OLD = {
   Cb: {
     "-1": ["Bb", "C", "D", "Eb", "F", "G", "A"],
     "0": ["Cb", "Db", "Eb", "Fb", "Gb", "Ab", "Bb"],
@@ -106,36 +74,4 @@ export const KEY_LIST: KeyList = {
     "0": ["B", "C#", "D#", "E", "F#", "G#", "A#"],
     "1": ["B", "C#", "D#", "E", "F#", "G#", "A#"],
   },
-};
-
-// export type Key = keyof typeof KEY_LIST;
-
-export type NoteNumber = 1 | 2 | 3 | 4 | 5 | 6 | 7;
-
-export type OctaveNumber = -1 | 0 | 1;
-
-export type NoteMeta = {
-  noteNumber: NoteNumber;
-  accidentalNumber: AccidentalNumber;
-  octaveNumber: OctaveNumber;
-};
-
-export type NoteMetaList = (NoteMeta | null)[];
-
-export type NoteMapped = {
-  number: string;
-  note: string;
-};
-
-export type ChordMeta = {
-  number: number;
-  accidental: number;
-  quality: string;
-};
-
-export type ChordMetaList = (ChordMeta | null)[];
-
-export type BarMeta = {
-  noteList: NoteMetaList;
-  chordList: ChordMetaList;
 };

@@ -76,7 +76,7 @@ describe("aa", () => {
     ];
 
     const res = convertNoteMetaListToMappedNoteList({
-      key: "E",
+      key: "C",
       noteMetaList: noteMetaList,
     });
     console.log(res);

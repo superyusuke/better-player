@@ -6,6 +6,7 @@ import {
   AccidentalNumber,
   NoteNumber,
   OctaveNumber,
+  ScaleItem,
 } from "src/model/music/base";
 
 import { accidentalNumberToJustString } from "src/model/music/convert/accidentalTo/accidentalNumberToJustString";
@@ -29,14 +30,14 @@ type ToNote = {
 const toNote = (props: ToNote) => {
   const { key, accidentalNumber, noteNumber, octaveNumber } = props;
 
-  const note =
+  const noteInfo: ScaleItem =
     KEY_LIST[key][accidentalNumberToJustString(accidentalNumber)][
       noteNumber - 1
     ];
 
   const octaveSymbol = octaveNumberToSymbol(octaveNumber);
 
-  return `${octaveSymbol}${note}`;
+  return `${octaveSymbol}${noteInfo.noteMapped}`;
 };
 
 export const convertNoteMetaToMappedNote = (props: Props): Out => {

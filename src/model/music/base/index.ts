@@ -1,0 +1,78 @@
+import { KEY_LIST } from "src/model/music/base/KEY_LIST";
+
+export { KEY_LIST };
+
+export type Key =
+  | "C"
+  | "G"
+  | "D"
+  | "A"
+  | "E"
+  | "B"
+  | "F#"
+  | "C#"
+  | "F"
+  | "Bb"
+  | "Eb"
+  | "Ab"
+  | "Db"
+  | "Gb"
+  | "Cb";
+
+// C G D A E B F# C#
+// C F Bb Eb Ab Db Gb Cb
+// https://people.carleton.edu/~jellinge/m101s12/Pages/13/13KeySignatures.html
+
+export type AccidentalNumber = -1 | 0 | 1;
+export type AccidentalNumberString = "-1" | "0" | "1";
+
+export type ScaleItem = {
+  pitchClass: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
+  noteMapped: string;
+};
+
+type ScaleTuple = [
+  ScaleItem,
+  ScaleItem,
+  ScaleItem,
+  ScaleItem,
+  ScaleItem,
+  ScaleItem,
+  ScaleItem
+];
+
+export type KeyList = {
+  [key in Key]: {
+    [accidental in AccidentalNumberString]: ScaleTuple;
+  };
+};
+
+export type NoteNumber = 1 | 2 | 3 | 4 | 5 | 6 | 7;
+
+export type OctaveNumber = -1 | 0 | 1;
+
+export type NoteMeta = {
+  noteNumber: NoteNumber;
+  accidentalNumber: AccidentalNumber;
+  octaveNumber: OctaveNumber;
+};
+
+export type NoteMetaList = (NoteMeta | null)[];
+
+export type NoteMapped = {
+  number: string;
+  note: string;
+};
+
+export type ChordMeta = {
+  number: number;
+  accidental: number;
+  quality: string;
+};
+
+export type ChordMetaList = (ChordMeta | null)[];
+
+export type BarMeta = {
+  noteList: NoteMetaList;
+  chordList: ChordMetaList;
+};
