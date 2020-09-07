@@ -14,6 +14,12 @@ import { convertNoteMetaListToMappedNoteList } from "src/model/music/convert/toN
 // };
 
 describe("aa", () => {
+  it("total", async () => {
+
+
+
+  });
+
   it("is", async () => {
     const note: NoteMeta = {
       noteNumber: 2,

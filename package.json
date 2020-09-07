@@ -8,8 +8,6 @@
     "eject": "expo eject"
   },
   "dependencies": {
-    "@emotion/core": "^10.0.35",
-    "@emotion/native": "^10.0.27",
     "@types/jest": "^26.0.13",
     "dotenv": "^8.2.0",
     "expo": "~38.0.8",

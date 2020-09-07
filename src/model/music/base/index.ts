@@ -72,7 +72,15 @@ export type ChordMeta = {
 
 export type ChordMetaList = (ChordMeta | null)[];
 
+export type Duration = 4 | 8 | 16 | 6;
+
 export type BarMeta = {
+  duration: Duration;
   noteList: NoteMetaList;
   chordList: ChordMetaList;
+};
+
+export type TotalInfo = {
+  key: Key;
+  BarMetList: BarMeta[];
 };
