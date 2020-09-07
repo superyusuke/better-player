@@ -28,25 +28,55 @@ describe("aa", () => {
   it("2", async () => {
     const noteMetaList: NoteMetaList = [
       {
+        noteNumber: 1,
+        accidentalNumber: 0,
+        octaveNumber: 0,
+      },
+      {
         noteNumber: 2,
-        accidentalNumber: -1,
-        octaveNumber: -1,
+        accidentalNumber: 0,
+        octaveNumber: 0,
+      },
+      {
+        noteNumber: 3,
+        accidentalNumber: 0,
+        octaveNumber: 0,
       },
       null,
       {
-        noteNumber: 4,
+        noteNumber: 1,
         accidentalNumber: 1,
-        octaveNumber: 1,
+        octaveNumber: 0,
       },
       {
-        noteNumber: 6,
+        noteNumber: 2,
+        accidentalNumber: 1,
+        octaveNumber: 0,
+      },
+      {
+        noteNumber: 3,
+        accidentalNumber: 1,
+        octaveNumber: 0,
+      },
+      {
+        noteNumber: 1,
+        accidentalNumber: -1,
+        octaveNumber: 0,
+      },
+      {
+        noteNumber: 2,
+        accidentalNumber: -1,
+        octaveNumber: 0,
+      },
+      {
+        noteNumber: 3,
         accidentalNumber: -1,
         octaveNumber: 0,
       },
     ];
 
     const res = convertNoteMetaListToMappedNoteList({
-      key: "C",
+      key: "E",
       noteMetaList: noteMetaList,
     });
     console.log(res);
