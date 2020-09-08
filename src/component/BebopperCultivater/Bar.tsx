@@ -7,6 +7,8 @@ import { Note } from "src/component/BebopperCultivater/Note";
 
 const styles = StyleSheet.create({
   wrapper: {
+    width: "25%",
+    flex: 0,
     flexDirection: "row",
     borderWidth: 2,
     borderColor: "green",

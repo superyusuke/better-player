@@ -8,10 +8,13 @@ import { convertNoteMetaToMappedNote } from "src/model/music/convert/toNoteMappe
 const styles = StyleSheet.create({
   wrapper: {
     borderColor: "blue",
-    borderStyle: "solid",
+    borderStyle: "dashed",
     flexDirection: "row",
+    borderBottomWidth: 1,
     borderWidth: 1,
     flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
   },
 });
 

@@ -6,7 +6,7 @@ import { BebopperCultivater } from "src/component/BebopperCultivater";
 
 export default function App() {
   return (
-    <View style={{ flex: 1, padding: 20 }}>
+    <View style={{ padding: 20, flex: 1 }}>
       <BebopperCultivater />
       <StatusBar style="auto" />
     </View>
