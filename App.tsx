@@ -4,8 +4,6 @@ import { Text, View } from "react-native";
 
 import { BebopperCultivater } from "src/component/BebopperCultivater";
 
-import { Dropdown } from "src/component/DropDown";
-
 export default function App() {
   const [pickerValue, setPickerValue] = useState<string>("java");
 

@@ -1,124 +1,52 @@
-import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import React, {
+  createContext,
+  FC,
+  useContext,
+  useReducer,
+  Dispatch,
+} from "react";
+import {
+  makeReducer,
+  State,
+  Action,
+} from "src/component/BebopperCultivater/reducer";
+import { BebopperCultivater as UI } from "src/component/BebopperCultivater/UI";
 
-import { MainInfo } from "src/component/BebopperCultivater/MainInfo";
-import { Bar } from "src/component/BebopperCultivater/Bar";
+type ContextType = {
+  state: State;
+  setState: Dispatch<Action>;
+};
 
-import { TotalInfo } from "src/model/music/base";
-
-const styles = StyleSheet.create({
-  base: {
-    backgroundColor: "red",
-    flex: 1,
-    flexDirection: "column",
-  },
-  barList: {
-    flex: 1,
-    flexDirection: "row",
-    flexWrap: "wrap",
-  },
+const Context = createContext<ContextType>({
+  setState: () => {},
+  state: { testValue: "init" },
 });
 
-const info: TotalInfo = {
-  key: "C",
-  BarMetList: [
-    {
-      duration: 8,
-      chordList: [],
-      noteList: [
-        {
-          noteNumber: 1,
-          octaveNumber: 1,
-          accidentalNumber: 0,
-        },
-        {
-          noteNumber: 2,
-          octaveNumber: -1,
-          accidentalNumber: 0,
-        },
-      ],
-    },
-    {
-      duration: 8,
-      chordList: [],
-      noteList: [
-        {
-          noteNumber: 3,
-          octaveNumber: 0,
-          accidentalNumber: 0,
-        },
-        {
-          noteNumber: 4,
-          octaveNumber: 0,
-          accidentalNumber: 0,
-        },
-      ],
-    },
-    {
-      duration: 16,
-      chordList: [],
-      noteList: [
-        {
-          noteNumber: 2,
-          octaveNumber: 0,
-          accidentalNumber: 0,
-        },
-        {
-          noteNumber: 3,
-          octaveNumber: 0,
-          accidentalNumber: 0,
-        },
-        {
-          noteNumber: 4,
-          octaveNumber: 0,
-          accidentalNumber: 0,
-        },
-        {
-          noteNumber: 5,
-          octaveNumber: 0,
-          accidentalNumber: 0,
-        },
-      ],
-    },
-    {
-      duration: 8,
-      chordList: [],
-      noteList: [
-        {
-          noteNumber: 6,
-          octaveNumber: 0,
-          accidentalNumber: 1,
-        },
-        {
-          noteNumber: 7,
-          octaveNumber: 0,
-          accidentalNumber: -1,
-        },
-      ],
-    },
-    {
-      duration: 4,
-      chordList: [],
-      noteList: [
-        {
-          noteNumber: 6,
-          octaveNumber: 0,
-          accidentalNumber: 1,
-        },
-      ],
-    },
-  ],
+export const useContextHook = () => useContext(Context);
+
+const Provider: FC = ({ children }) => {
+  const [state, setState] = useReducer(makeReducer(), {
+    testValue: "init",
+  });
+
+  return (
+    <Context.Provider
+      value={{
+        setState,
+        state,
+      }}
+    >
+      {children}
+    </Context.Provider>
+  );
 };
 
 export const BebopperCultivater = () => {
+  //　ここでデータを取得する
+
   return (
-    <View style={styles.base}>
-      <MainInfo />
-      <View style={styles.barList}>
-        {info.BarMetList.map((bar, index) => {
-          return <Bar bar={bar} key={index} />;
-        })}
-      </View>
-    </View>
+    <Provider>
+      <UI />
+    </Provider>
   );
 };

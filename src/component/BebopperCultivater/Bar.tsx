@@ -15,6 +15,8 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: "green",
     height: 50,
+    // justifyContent: "center",
+    // alignItems: "center",
   },
 });
 
