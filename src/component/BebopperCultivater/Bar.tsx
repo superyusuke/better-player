@@ -1,14 +1,16 @@
-import React, { useDebugValue } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import React from "react";
+import { View, StyleSheet } from "react-native";
+import RNPickerSelect from "react-native-picker-select";
+import { Note } from "src/component/BebopperCultivater/Note";
 
 import { BarMeta } from "src/model/music/base";
-
-import { Note } from "src/component/BebopperCultivater/Note";
 
 const styles = StyleSheet.create({
   wrapper: {
     width: "25%",
-    flex: 0,
+    flexDirection: "column",
+  },
+  bar: {
     flexDirection: "row",
     borderWidth: 2,
     borderColor: "green",
@@ -26,9 +28,20 @@ export const Bar = (props: Props) => {
 
   return (
     <View style={styles.wrapper}>
-      {noteList.map((note, i) => (
-        <Note note={note} key={i} />
-      ))}
+      <RNPickerSelect
+        placeholder={{}}
+        onValueChange={(value) => console.log(value)}
+        items={[
+          { label: "Football", value: "football" },
+          { label: "Baseball", value: "baseball" },
+          { label: "Hockey", value: "hockey" },
+        ]}
+      />
+      <View style={styles.bar}>
+        {noteList.map((note, i) => (
+          <Note note={note} key={i} />
+        ))}
+      </View>
     </View>
   );
 };

@@ -1,5 +1,6 @@
 import React from "react";
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet } from "react-native";
+import RNPickerSelect from "react-native-picker-select";
 
 import { NoteMeta } from "src/model/music/base";
 
@@ -36,7 +37,15 @@ export const Note = (props: Props) => {
 
   return (
     <View style={styles.wrapper}>
-      <Text>{mappedNote.note}</Text>
+      <RNPickerSelect
+        placeholder={{}}
+        onValueChange={(value) => console.log(value)}
+        items={[
+          { label: "Football", value: "football" },
+          { label: "Baseball", value: "baseball" },
+          { label: "Hockey", value: "hockey" },
+        ]}
+      />
     </View>
   );
 };

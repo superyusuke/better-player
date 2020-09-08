@@ -28,12 +28,12 @@ const info: TotalInfo = {
       noteList: [
         {
           noteNumber: 1,
-          octaveNumber: 0,
+          octaveNumber: 1,
           accidentalNumber: 0,
         },
         {
           noteNumber: 2,
-          octaveNumber: 0,
+          octaveNumber: -1,
           accidentalNumber: 0,
         },
       ],
@@ -43,14 +43,14 @@ const info: TotalInfo = {
       chordList: [],
       noteList: [
         {
-          noteNumber: 5,
+          noteNumber: 3,
           octaveNumber: 0,
-          accidentalNumber: 1,
+          accidentalNumber: 0,
         },
         {
-          noteNumber: 6,
+          noteNumber: 4,
           octaveNumber: 0,
-          accidentalNumber: -1,
+          accidentalNumber: 0,
         },
       ],
     },
