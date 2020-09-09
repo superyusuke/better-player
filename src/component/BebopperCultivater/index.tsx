@@ -15,16 +15,19 @@ import { BebopperCultivater as UI } from "src/component/BebopperCultivater/UI";
 type ContextType = {
   state: State;
   setState: Dispatch<Action>;
+  fetchedData: any;
 };
 
 const Context = createContext<ContextType>({
   setState: () => {},
   state: { testValue: "init" },
+  fetchedData: {},
 });
 
 export const useContextHook = () => useContext(Context);
 
 const Provider: FC = ({ children }) => {
+  // ここでフェッチする data これを value に渡す
   const [state, setState] = useReducer(makeReducer(), {
     testValue: "init",
   });
@@ -34,6 +37,7 @@ const Provider: FC = ({ children }) => {
       value={{
         setState,
         state,
+        fetchedData: {},
       }}
     >
       {children}
@@ -42,8 +46,6 @@ const Provider: FC = ({ children }) => {
 };
 
 export const BebopperCultivater = () => {
-  //　ここでデータを取得する
-
   return (
     <Provider>
       <UI />
