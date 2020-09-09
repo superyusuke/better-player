@@ -5,44 +5,52 @@ import React, {
   useReducer,
   Dispatch,
 } from "react";
+
+import { TotalInfo } from "src/model/music/base";
+
 import {
   makeReducer,
   State,
   Action,
 } from "src/component/BebopperCultivater/reducer";
+
 import { BebopperCultivater as UI } from "src/component/BebopperCultivater/UI";
+import { info } from "src/component/BebopperCultivater/dummyData";
 
 type ContextType = {
   state: State;
   setState: Dispatch<Action>;
-  fetchedData: any;
+  fetchedData: TotalInfo;
 };
 
 const Context = createContext<ContextType>({
   setState: () => {},
-  state: { testValue: "init" },
-  fetchedData: {},
+  state: {
+    totalInfo: null,
+  },
+  fetchedData: info,
 });
 
 export const useContextHook = () => useContext(Context);
 
 const Provider: FC = ({ children }) => {
-  // ここでフェッチする data これを value に渡す
+  const fetchedData = info;
+
   const [state, setState] = useReducer(makeReducer(), {
-    testValue: "init",
+    totalInfo: null,
   });
 
-  return (
+  return fetchedData ? (
     <Context.Provider
       value={{
         setState,
         state,
-        fetchedData: {},
+        fetchedData,
       }}
     >
       {children}
     </Context.Provider>
-  );
+  ) : null;
 };
 
 export const BebopperCultivater = () => {

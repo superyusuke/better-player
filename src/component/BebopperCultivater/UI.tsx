@@ -1,11 +1,9 @@
-import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import React, { useEffect } from "react";
+import { View, StyleSheet } from "react-native";
 
 import { MainInfo } from "src/component/BebopperCultivater/MainInfo";
 import { Bar } from "src/component/BebopperCultivater/Bar";
 import { useContextHook } from "src/component/BebopperCultivater/index";
-
-import { TotalInfo } from "src/model/music/base";
 
 const styles = StyleSheet.create({
   base: {
@@ -20,107 +18,25 @@ const styles = StyleSheet.create({
   },
 });
 
-const info: TotalInfo = {
-  key: "C",
-  BarMetList: [
-    {
-      duration: 8,
-      chordList: [],
-      noteList: [
-        {
-          noteNumber: 1,
-          octaveNumber: 1,
-          accidentalNumber: 0,
-        },
-        {
-          noteNumber: 2,
-          octaveNumber: -1,
-          accidentalNumber: 0,
-        },
-      ],
-    },
-    {
-      duration: 8,
-      chordList: [],
-      noteList: [
-        {
-          noteNumber: 3,
-          octaveNumber: 0,
-          accidentalNumber: 0,
-        },
-        {
-          noteNumber: 4,
-          octaveNumber: 0,
-          accidentalNumber: 0,
-        },
-      ],
-    },
-    {
-      duration: 16,
-      chordList: [],
-      noteList: [
-        {
-          noteNumber: 2,
-          octaveNumber: 0,
-          accidentalNumber: 0,
-        },
-        {
-          noteNumber: 3,
-          octaveNumber: 0,
-          accidentalNumber: 0,
-        },
-        {
-          noteNumber: 4,
-          octaveNumber: 0,
-          accidentalNumber: 0,
-        },
-        {
-          noteNumber: 5,
-          octaveNumber: 0,
-          accidentalNumber: 0,
-        },
-      ],
-    },
-    {
-      duration: 8,
-      chordList: [],
-      noteList: [
-        {
-          noteNumber: 6,
-          octaveNumber: 0,
-          accidentalNumber: 1,
-        },
-        {
-          noteNumber: 7,
-          octaveNumber: 0,
-          accidentalNumber: -1,
-        },
-      ],
-    },
-    {
-      duration: 4,
-      chordList: [],
-      noteList: [
-        {
-          noteNumber: 6,
-          octaveNumber: 0,
-          accidentalNumber: 1,
-        },
-      ],
-    },
-  ],
-};
-
 export const BebopperCultivater = () => {
-  const { state } = useContextHook();
+  const { state, setState, fetchedData } = useContextHook();
 
-  console.log(state);
+  useEffect(() => {
+    setState({
+      type: "setInitialFetchedData",
+      payload: fetchedData,
+    });
+  }, [fetchedData]);
+
+  if (!state.totalInfo) {
+    return null;
+  }
 
   return (
     <View style={styles.base}>
       <MainInfo />
       <View style={styles.barList}>
-        {info.BarMetList.map((bar, index) => {
+        {state.totalInfo.BarMetList.map((bar, index) => {
           return <Bar bar={bar} key={index} />;
         })}
       </View>

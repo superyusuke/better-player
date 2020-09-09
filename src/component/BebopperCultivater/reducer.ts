@@ -1,5 +1,7 @@
+import { TotalInfo } from "src/model/music/base";
+
 export type State = {
-  testValue: string;
+  totalInfo: TotalInfo | null;
 };
 
 type TestAction = {
@@ -7,13 +9,18 @@ type TestAction = {
   payload: string;
 };
 
-export type Action = TestAction;
+type SetInitialFetchedData = {
+  type: "setInitialFetchedData";
+  payload: TotalInfo;
+};
+
+export type Action = TestAction | SetInitialFetchedData;
 
 export const makeReducer = () => (state: State, action: Action): State => {
-  if (action.type === "test") {
+  if (action.type === "setInitialFetchedData") {
     return {
       ...state,
-      testValue: state.testValue + action.payload,
+      totalInfo: action.payload,
     };
   }
   return state;

@@ -4,9 +4,12 @@ generates:
   # Resolver は実際に値を DB から取得したり API を使用する部分
   ./src/types/generated/graphql.ts:
     # Schema の場所を指定
-    schema: ./index.ts
+    schema: ./src/index.ts
     config:
       useIndexSignature: true
+      constEnums: true
+      scalars:
+        JSON: any
       # context:
       # Apollo Server を立てるときに外から注入した DB や、
       # Apollo Sever への request に含まれる header 情報等のこと
