@@ -1,5 +1,5 @@
 import { ApolloServer, gql } from "apollo-server";
-import { Book, Resolvers } from "./types/generated/graphql";
+import { Book, Resolvers } from "src/types/generated/graphql";
 
 import { test } from "src/test";
 

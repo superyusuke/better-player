@@ -1,3 +1,5 @@
+import { PickerSelectProps } from "react-native-picker-select";
+
 import { KEY_LIST } from "src/model/music/base/KEY_LIST";
 
 export { KEY_LIST };
@@ -23,9 +25,6 @@ export type Key =
 // C F Bb Eb Ab Db Gb Cb
 // https://people.carleton.edu/~jellinge/m101s12/Pages/13/13KeySignatures.html
 
-export type AccidentalNumber = -1 | 0 | 1;
-export type AccidentalNumberString = "-1" | "0" | "1";
-
 export type ScaleItem = {
   pitchClass: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
   noteMapped: string;
@@ -41,6 +40,24 @@ type ScaleTuple = [
   ScaleItem
 ];
 
+export type AccidentalNumber = -1 | 0 | 1;
+export const accidentalList: PickerSelectProps["items"] = [
+  {
+    label: "♮",
+    value: 0,
+    inputLabel: " ",
+  },
+  {
+    label: "♯",
+    value: 1,
+  },
+  {
+    label: "♭",
+    value: -1,
+  },
+];
+export type AccidentalNumberString = "-1" | "0" | "1";
+
 export type KeyList = {
   [key in Key]: {
     [accidental in AccidentalNumberString]: ScaleTuple;
@@ -48,8 +65,13 @@ export type KeyList = {
 };
 
 export type NoteNumber = 1 | 2 | 3 | 4 | 5 | 6 | 7;
+export const noteNumberList = [1, 2, 3, 4, 5, 6, 7];
+export const noteNumberListForPicker: PickerSelectProps["items"] = noteNumberList.map(
+  (o) => ({ label: String(o), value: o })
+);
 
 export type OctaveNumber = -1 | 0 | 1;
+export const octaveNumber = -1 | 0 | 1;
 
 export type NoteMeta = {
   noteNumber: NoteNumber;

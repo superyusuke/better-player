@@ -2,9 +2,10 @@ import React from "react";
 import { View, StyleSheet } from "react-native";
 import RNPickerSelect from "react-native-picker-select";
 
-import { NoteMeta } from "src/model/music/base";
+import { NoteMeta, accidentalList } from "src/model/music/base";
 
 import { convertNoteMetaToMappedNote } from "src/model/music/convert/toNoteMapped/convertNoteMetaToMappedNote";
+import { NoteNumber } from "src/component/BebopperCultivater/Note/NoteNumber";
 
 const styles = StyleSheet.create({
   wrapper: {
@@ -40,12 +41,9 @@ export const Note = (props: Props) => {
       <RNPickerSelect
         placeholder={{}}
         onValueChange={(value) => console.log(value)}
-        items={[
-          { label: "Football", value: "football" },
-          { label: "Baseball", value: "baseball" },
-          { label: "Hockey", value: "hockey" },
-        ]}
+        items={accidentalList}
       />
+      <NoteNumber />
     </View>
   );
 };
