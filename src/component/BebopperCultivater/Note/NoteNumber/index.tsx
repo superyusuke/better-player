@@ -11,16 +11,10 @@ import {
 
 const styles = StyleSheet.create({
   wrapper: {
-    width: "25%",
-    flexDirection: "column",
-  },
-  bar: {
-    flexDirection: "row",
-    borderWidth: 2,
-    borderColor: "green",
-    height: 50,
-    // justifyContent: "center",
-    // alignItems: "center",
+    justifyContent: "center",
+    alignItems: "center",
+    // width: "25%",
+    // flexDirection: "column",
   },
 });
 

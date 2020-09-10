@@ -14,7 +14,7 @@ import {
   Action,
 } from "src/component/BebopperCultivater/reducer";
 
-import { BebopperCultivater as UI } from "src/component/BebopperCultivater/UI";
+import { Container } from "src/component/BebopperCultivater/Container";
 import { info } from "src/component/BebopperCultivater/dummyData";
 
 type ContextType = {
@@ -56,7 +56,7 @@ const Provider: FC = ({ children }) => {
 export const BebopperCultivater = () => {
   return (
     <Provider>
-      <UI />
+      <Container />
     </Provider>
   );
 };

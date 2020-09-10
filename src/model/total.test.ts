@@ -17,7 +17,7 @@ describe("aa", () => {
   it("total", async () => {
     const totalInfo: TotalInfo = {
       key: "C",
-      BarMetList: [
+      barMetaList: [
         {
           duration: 8,
           chordList: [],

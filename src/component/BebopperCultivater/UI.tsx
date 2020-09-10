@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { View, StyleSheet } from "react-native";
 
 import { MainInfo } from "src/component/BebopperCultivater/MainInfo";
 import { Bar } from "src/component/BebopperCultivater/Bar";
-import { useContextHook } from "src/component/BebopperCultivater/index";
+import { useContextHook } from "src/component/BebopperCultivater";
 
 const styles = StyleSheet.create({
   base: {
@@ -18,26 +18,21 @@ const styles = StyleSheet.create({
   },
 });
 
-export const BebopperCultivater = () => {
-  const { state, setState, fetchedData } = useContextHook();
-
-  useEffect(() => {
-    setState({
-      type: "setInitialFetchedData",
-      payload: fetchedData,
-    });
-  }, [fetchedData]);
+export const UI = () => {
+  const { state } = useContextHook();
 
   if (!state.totalInfo) {
     return null;
   }
 
+  console.log(state.totalInfo);
+
   return (
     <View style={styles.base}>
       <MainInfo />
       <View style={styles.barList}>
-        {state.totalInfo.BarMetList.map((bar, index) => {
-          return <Bar bar={bar} key={index} />;
+        {state.totalInfo.barMetaList.map((bar, index) => {
+          return <Bar bar={bar} key={index} barNumber={index + 1} />;
         })}
       </View>
     </View>

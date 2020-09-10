@@ -2,7 +2,7 @@ import { TotalInfo } from "src/model/music/base";
 
 export const info: TotalInfo = {
   key: "C",
-  BarMetList: [
+  barMetaList: [
     {
       duration: 8,
       chordList: [],
@@ -12,11 +12,7 @@ export const info: TotalInfo = {
           octaveNumber: 1,
           accidentalNumber: 0,
         },
-        {
-          noteNumber: 2,
-          octaveNumber: -1,
-          accidentalNumber: 0,
-        },
+        null,
       ],
     },
     {

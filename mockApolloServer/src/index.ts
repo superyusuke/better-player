@@ -5,7 +5,7 @@ import { TotalInfo } from "../../src/model/music/base/index";
 
 const info: TotalInfo = {
   key: "C",
-  BarMetList: [
+  barMetaList: [
     {
       duration: 8,
       chordList: [],

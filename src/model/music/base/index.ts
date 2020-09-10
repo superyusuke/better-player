@@ -45,7 +45,7 @@ export const accidentalList: PickerSelectProps["items"] = [
   {
     label: "♮",
     value: 0,
-    inputLabel: " ",
+    // inputLabel: " ",
   },
   {
     label: "♯",
@@ -104,5 +104,5 @@ export type BarMeta = {
 
 export type TotalInfo = {
   key: Key;
-  BarMetList: BarMeta[];
+  barMetaList: BarMeta[];
 };
