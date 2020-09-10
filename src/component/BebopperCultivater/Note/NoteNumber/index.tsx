@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, Text } from "react-native";
 import RNPickerSelect from "react-native-picker-select";
 
 import {
@@ -29,6 +29,18 @@ export const NoteNumber = (props: Props) => {
   return (
     <View style={styles.wrapper}>
       <RNPickerSelect
+        // style={{
+        //   iconContainer: {
+        //     backgroundColor: "green",
+        //     width: 10,
+        //     height: 10,
+        //   },
+        //   viewContainer: {
+        //     backgroundColor: "green",
+        //     width: 10,
+        //     height: 10,
+        //   },
+        // }}
         value={noteNumber}
         placeholder={{}}
         onValueChange={(value) =>

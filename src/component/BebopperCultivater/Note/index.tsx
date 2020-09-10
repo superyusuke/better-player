@@ -28,18 +28,10 @@ type Props = {
 export const Note = (props: Props) => {
   const { note, barIndex, noteIndex } = props;
 
-  // if (!note) {
-  //   return null;
-  // }
-  //
-  // const mappedNote = convertNoteMetaToMappedNote({
-  //   noteMeta: note,
-  //   key: "C",
-  // });
-
   return (
     <View style={styles.wrapper}>
       <Accidental />
+      {/* ここおかしい note null でも出す必要あり*/}
       {note ? (
         <NoteNumber
           noteNumber={note.noteNumber}
