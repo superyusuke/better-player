@@ -25,8 +25,6 @@ export const UI = () => {
     return null;
   }
 
-  console.log(state.totalInfo);
-
   return (
     <View style={styles.base}>
       <MainInfo />

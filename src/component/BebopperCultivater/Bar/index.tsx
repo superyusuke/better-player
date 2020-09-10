@@ -53,7 +53,7 @@ export const Bar = (props: Props) => {
       />
       <View style={styles.bar}>
         {noteList.map((note, i) => (
-          <Note note={note} key={i} />
+          <Note note={note} key={i} barIndex={barNumber} noteIndex={i + 1} />
         ))}
       </View>
     </View>

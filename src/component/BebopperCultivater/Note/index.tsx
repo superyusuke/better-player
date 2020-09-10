@@ -21,10 +21,12 @@ const styles = StyleSheet.create({
 
 type Props = {
   note: NoteMeta | null;
+  barIndex: number;
+  noteIndex: number;
 };
 
 export const Note = (props: Props) => {
-  const { note } = props;
+  const { note, barIndex, noteIndex } = props;
 
   // if (!note) {
   //   return null;
@@ -38,7 +40,13 @@ export const Note = (props: Props) => {
   return (
     <View style={styles.wrapper}>
       <Accidental />
-      {note ? <NoteNumber noteNumber={note.noteNumber} /> : null}
+      {note ? (
+        <NoteNumber
+          noteNumber={note.noteNumber}
+          barIndex={barIndex}
+          noteIndex={noteIndex}
+        />
+      ) : null}
     </View>
   );
 };

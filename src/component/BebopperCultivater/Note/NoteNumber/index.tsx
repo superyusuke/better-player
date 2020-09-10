@@ -7,6 +7,8 @@ import {
   noteNumberListForPicker,
 } from "src/model/music/base";
 
+import { useContextHook } from "src/component/BebopperCultivater";
+
 const styles = StyleSheet.create({
   wrapper: {
     justifyContent: "center",
@@ -16,17 +18,29 @@ const styles = StyleSheet.create({
 
 type Props = {
   noteNumber: NoteNumberType;
+  barIndex: number;
+  noteIndex: number;
 };
 
 export const NoteNumber = (props: Props) => {
-  const { noteNumber } = props;
+  const { setState } = useContextHook();
+  const { noteNumber, noteIndex, barIndex } = props;
 
   return (
     <View style={styles.wrapper}>
       <RNPickerSelect
         value={noteNumber}
         placeholder={{}}
-        onValueChange={(value) => console.log(value)}
+        onValueChange={(value) =>
+          setState({
+            type: "setNoteNumberOfTargetNoteIndexOfTargetBar",
+            payload: {
+              noteNumber: value,
+              targetNoteIndex: noteIndex,
+              targetBarIndex: barIndex,
+            },
+          })
+        }
         items={noteNumberListForPicker}
       />
     </View>
