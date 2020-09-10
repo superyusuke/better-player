@@ -1,11 +1,9 @@
 import React from "react";
-import { View, StyleSheet, Text } from "react-native";
-import RNPickerSelect, { PickerSelectProps } from "react-native-picker-select";
-import { Note } from "src/component/BebopperCultivater/Note";
+import { View, StyleSheet } from "react-native";
+import RNPickerSelect from "react-native-picker-select";
 
 import {
-  accidentalList,
-  BarMeta,
+  NoteNumber as NoteNumberType,
   noteNumberListForPicker,
 } from "src/model/music/base";
 
@@ -13,22 +11,20 @@ const styles = StyleSheet.create({
   wrapper: {
     justifyContent: "center",
     alignItems: "center",
-    // width: "25%",
-    // flexDirection: "column",
   },
 });
 
 type Props = {
-  // bar: BarMeta;
+  noteNumber: NoteNumberType;
 };
 
 export const NoteNumber = (props: Props) => {
-  // const { bar } = props;
-  // const { noteList } = bar;
+  const { noteNumber } = props;
 
   return (
     <View style={styles.wrapper}>
       <RNPickerSelect
+        value={noteNumber}
         placeholder={{}}
         onValueChange={(value) => console.log(value)}
         items={noteNumberListForPicker}

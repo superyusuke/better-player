@@ -1,6 +1,7 @@
 import { TotalInfo, Duration } from "src/model/music/base";
 
 import { setDurationOfTargetBar } from "src/component/BebopperCultivater/reducer/setDurationOfTargetBar";
+import { reset } from "src/component/BebopperCultivater/reducer/reset";
 
 export type State = {
   totalInfo: TotalInfo | null;
@@ -24,10 +25,15 @@ type SetDurationOfTargetBar = {
   };
 };
 
+type Reset = {
+  type: "reset";
+};
+
 export type Action =
   | TestAction
   | SetInitialFetchedData
-  | SetDurationOfTargetBar;
+  | SetDurationOfTargetBar
+  | Reset;
 
 export const makeReducer = () => (state: State, action: Action): State => {
   if (action.type === "setInitialFetchedData") {
@@ -52,6 +58,12 @@ export const makeReducer = () => (state: State, action: Action): State => {
         duration: action.payload.duration,
       }),
     };
+  }
+
+  if (action.type === "reset") {
+    const res = reset({});
+
+    return { totalInfo: res };
   }
 
   return state;

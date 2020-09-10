@@ -38,7 +38,7 @@ export const Note = (props: Props) => {
   return (
     <View style={styles.wrapper}>
       <Accidental />
-      <NoteNumber />
+      {note ? <NoteNumber noteNumber={note.noteNumber} /> : null}
     </View>
   );
 };
