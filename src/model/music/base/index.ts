@@ -65,9 +65,21 @@ export type KeyList = {
 };
 
 export type NoteNumber = 1 | 2 | 3 | 4 | 5 | 6 | 7;
-export const noteNumberList = [1, 2, 3, 4, 5, 6, 7];
+export const noteNumberList = [null, 1, 2, 3, 4, 5, 6, 7];
 export const noteNumberListForPicker: PickerSelectProps["items"] = noteNumberList.map(
-  (o) => ({ label: String(o), value: o })
+  (o) => {
+    if (o === null) {
+      return {
+        value: null,
+        label: "-",
+      };
+    }
+
+    return {
+      label: String(o),
+      value: o,
+    };
+  }
 );
 
 export type OctaveNumber = -1 | 0 | 1;

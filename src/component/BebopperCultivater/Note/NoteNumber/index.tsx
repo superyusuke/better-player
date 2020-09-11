@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
 });
 
 type Props = {
-  noteNumber: NoteNumberType;
+  noteNumber: NoteNumberType | null;
   barIndex: number;
   noteIndex: number;
 };

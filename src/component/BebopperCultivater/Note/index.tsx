@@ -31,14 +31,11 @@ export const Note = (props: Props) => {
   return (
     <View style={styles.wrapper}>
       <Accidental />
-      {/* ここおかしい note null でも出す必要あり*/}
-      {note ? (
-        <NoteNumber
-          noteNumber={note.noteNumber}
-          barIndex={barIndex}
-          noteIndex={noteIndex}
-        />
-      ) : null}
+      <NoteNumber
+        noteNumber={note ? note.noteNumber : null}
+        barIndex={barIndex}
+        noteIndex={noteIndex}
+      />
     </View>
   );
 };
