@@ -45,7 +45,8 @@ export const accidentalList: PickerSelectProps["items"] = [
   {
     label: "♮",
     value: 0,
-    // inputLabel: " ",
+    // 空文字だと消えてしまう。スペースを入れる必要あり。
+    inputLabel: " ",
   },
   {
     label: "♯",

@@ -1,8 +1,14 @@
-import { TotalInfo, Duration, NoteNumber } from "src/model/music/base";
+import {
+  TotalInfo,
+  Duration,
+  NoteNumber,
+  AccidentalNumber,
+} from "src/model/music/base";
 
 import { setDurationOfTargetBar } from "src/component/BebopperCultivater/reducer/setDurationOfTargetBar";
 import { reset } from "src/component/BebopperCultivater/reducer/reset";
 import { setNoteNumberOfTargetNoteIndexOfTargetBar } from "src/component/BebopperCultivater/reducer/setNoteNumberOfTargetNoteIndexOfTargetBar";
+import { setAccidentalOfTargetNoteIndexOfTargetBar } from "src/component/BebopperCultivater/reducer/setAccidentalOfTargetNoteIndexOfTargetBar";
 
 export type State = {
   totalInfo: TotalInfo | null;
@@ -39,12 +45,22 @@ type SetNoteNumberOfTargetNoteIndexOfTargetBar = {
   };
 };
 
+type SetAccidentalOfTargetNoteIndexOfTargetBar = {
+  type: "setAccidentalOfTargetNoteIndexOfTargetBar";
+  payload: {
+    accidentalNumber: AccidentalNumber;
+    targetNoteIndex: number;
+    targetBarIndex: number;
+  };
+};
+
 export type Action =
   | TestAction
   | SetInitialFetchedData
   | SetDurationOfTargetBar
   | Reset
-  | SetNoteNumberOfTargetNoteIndexOfTargetBar;
+  | SetNoteNumberOfTargetNoteIndexOfTargetBar
+  | SetAccidentalOfTargetNoteIndexOfTargetBar;
 
 export const makeReducer = () => (state: State, action: Action): State => {
   if (action.type === "setInitialFetchedData") {
@@ -91,6 +107,25 @@ export const makeReducer = () => (state: State, action: Action): State => {
       targetBarIndex: action.payload.targetBarIndex,
       targetNoteIndex: action.payload.targetNoteIndex,
       noteNumber: action.payload.noteNumber,
+    });
+
+    return {
+      totalInfo: res,
+    };
+  }
+
+  if (action.type === "setAccidentalOfTargetNoteIndexOfTargetBar") {
+    if (!state.totalInfo) {
+      return {
+        ...state,
+      };
+    }
+
+    const res = setAccidentalOfTargetNoteIndexOfTargetBar({
+      totalInfo: state.totalInfo,
+      targetBarIndex: action.payload.targetBarIndex,
+      targetNoteIndex: action.payload.targetNoteIndex,
+      accidentalNumber: action.payload.accidentalNumber,
     });
 
     return {

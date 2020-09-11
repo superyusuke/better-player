@@ -30,7 +30,11 @@ export const Note = (props: Props) => {
 
   return (
     <View style={styles.wrapper}>
-      <Accidental />
+      <Accidental
+        accidentalNumber={note ? note.accidentalNumber : null}
+        barIndex={barIndex}
+        noteIndex={noteIndex}
+      />
       <NoteNumber
         noteNumber={note ? note.noteNumber : null}
         barIndex={barIndex}
