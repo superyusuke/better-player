@@ -4,7 +4,7 @@ import BottomSheet from "reanimated-bottom-sheet";
 import { useContextHook } from "src/component/BebopperCultivater";
 
 export const BottomSheetComp = () => {
-  const { bottomSheetRef } = useContextHook();
+  const { bottomSheetRef, state } = useContextHook();
 
   const renderContent = () => (
     <View
@@ -14,7 +14,7 @@ export const BottomSheetComp = () => {
         height: 450,
       }}
     >
-      <Text>Swipe down to close aa</Text>
+      <Text>Swipe down to close</Text>
       <Button
         title={"押したら閉じる"}
         onPress={() => {

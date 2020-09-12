@@ -3,10 +3,7 @@ import React from "react";
 import { View, Text, StyleSheet, Button } from "react-native";
 
 import { Reset } from "src/component/BebopperCultivater/MainInfo/Reset";
-import {
-  BebopperCultivater,
-  useContextHook,
-} from "src/component/BebopperCultivater";
+import { useContextHook } from "src/component/BebopperCultivater";
 
 const styles = StyleSheet.create({
   wrapper: {},
