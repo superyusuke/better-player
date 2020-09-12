@@ -9,9 +9,17 @@ import { setDurationOfTargetBar } from "src/component/BebopperCultivater/reducer
 import { reset } from "src/component/BebopperCultivater/reducer/reset";
 import { setNoteNumberOfTargetNoteIndexOfTargetBar } from "src/component/BebopperCultivater/reducer/setNoteNumberOfTargetNoteIndexOfTargetBar";
 import { setAccidentalOfTargetNoteIndexOfTargetBar } from "src/component/BebopperCultivater/reducer/setAccidentalOfTargetNoteIndexOfTargetBar";
+import React from "react";
+
+import BottomSheetBehavior from "reanimated-bottom-sheet";
+
+type Selected = {
+  bar: number;
+} | null;
 
 export type State = {
   totalInfo: TotalInfo | null;
+  selected: Selected;
 };
 
 type TestAction = {
@@ -54,15 +62,36 @@ type SetAccidentalOfTargetNoteIndexOfTargetBar = {
   };
 };
 
+type ManipulateToBottomSheetRef = {
+  type: "manipulateToBottomSheetRef";
+  payload: {};
+};
+
 export type Action =
   | TestAction
   | SetInitialFetchedData
   | SetDurationOfTargetBar
   | Reset
   | SetNoteNumberOfTargetNoteIndexOfTargetBar
-  | SetAccidentalOfTargetNoteIndexOfTargetBar;
+  | SetAccidentalOfTargetNoteIndexOfTargetBar
+  | ManipulateToBottomSheetRef;
 
-export const makeReducer = () => (state: State, action: Action): State => {
+type Props = {
+  bottomSheetRef: React.MutableRefObject<BottomSheetBehavior | null>;
+};
+
+export const makeReducer = (props: Props) => (
+  state: State,
+  action: Action
+): State => {
+  const { bottomSheetRef } = props;
+
+  if (action.type === "manipulateToBottomSheetRef") {
+    if (bottomSheetRef.current) {
+      bottomSheetRef.current.snapTo(1);
+    }
+  }
+
   if (action.type === "setInitialFetchedData") {
     return {
       ...state,
@@ -91,6 +120,7 @@ export const makeReducer = () => (state: State, action: Action): State => {
     const res = reset({});
 
     return {
+      ...state,
       totalInfo: res,
     };
   }
@@ -110,6 +140,7 @@ export const makeReducer = () => (state: State, action: Action): State => {
     });
 
     return {
+      ...state,
       totalInfo: res,
     };
   }
@@ -129,6 +160,7 @@ export const makeReducer = () => (state: State, action: Action): State => {
     });
 
     return {
+      ...state,
       totalInfo: res,
     };
   }

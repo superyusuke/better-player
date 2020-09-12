@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
 });
 
 export const MainInfo = () => {
-  const { bottomSheetRef } = useContextHook();
+  const { bottomSheetRef, setState } = useContextHook();
 
   return (
     <View style={styles.wrapper}>
@@ -22,6 +22,15 @@ export const MainInfo = () => {
           if (bottomSheetRef.current) {
             bottomSheetRef.current.snapTo(1);
           }
+        }}
+      />
+      <Button
+        title={"manipulateToBottomSheetRef"}
+        onPress={() => {
+          setState({
+            type: "manipulateToBottomSheetRef",
+            payload: {},
+          });
         }}
       />
       <Text>2222</Text>

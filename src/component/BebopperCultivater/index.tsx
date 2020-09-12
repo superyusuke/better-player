@@ -32,6 +32,7 @@ const Context = createContext<ContextType>({
   setState: () => {},
   state: {
     totalInfo: null,
+    selected: null,
   },
   fetchedData: info,
   bottomSheetRef: (null as unknown) as BottomSheetRef,
@@ -44,9 +45,15 @@ const Provider: FC = ({ children }) => {
 
   const bottomSheetRef = React.useRef<BottomSheet | null>(null);
 
-  const [state, setState] = useReducer(makeReducer(), {
-    totalInfo: null,
-  });
+  const [state, setState] = useReducer(
+    makeReducer({
+      bottomSheetRef,
+    }),
+    {
+      totalInfo: null,
+      selected: null,
+    }
+  );
 
   return fetchedData ? (
     <Context.Provider
