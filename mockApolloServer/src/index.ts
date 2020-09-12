@@ -1,6 +1,8 @@
 import { ApolloServer, gql } from "apollo-server";
+// @ts-ignore
 import { Resolvers } from "src/types/generated/graphql";
 
+// @ts-ignore
 import { TotalInfo } from "../../src/model/music/base/index";
 
 const info: TotalInfo = {

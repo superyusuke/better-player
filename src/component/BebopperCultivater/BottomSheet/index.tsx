@@ -1,9 +1,11 @@
 import React from "react";
-import { StyleSheet, Text, View, Button } from "react-native";
-import Animated from "react-native-reanimated";
+import { Text, View, Button } from "react-native";
 import BottomSheet from "reanimated-bottom-sheet";
+import { useContextHook } from "src/component/BebopperCultivater";
 
 export const BottomSheetComp = () => {
+  const { bottomSheetRef } = useContextHook();
+
   const renderContent = () => (
     <View
       style={{
@@ -13,36 +15,23 @@ export const BottomSheetComp = () => {
       }}
     >
       <Text>Swipe down to close aa</Text>
+      <Button
+        title={"押したら閉じる"}
+        onPress={() => {
+          if (bottomSheetRef.current) {
+            bottomSheetRef.current.snapTo(0);
+          }
+        }}
+      />
     </View>
   );
 
-  const sheetRef = React.useRef<BottomSheet | null>(null);
-
   return (
-    <>
-      <View
-        style={{
-          flex: 1,
-          backgroundColor: "green",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        <Button
-          title="Open Bottom Sheet"
-          onPress={() => {
-            if (sheetRef.current) {
-              sheetRef.current.snapTo(0);
-            }
-          }}
-        />
-      </View>
-      <BottomSheet
-        ref={sheetRef}
-        snapPoints={[350, 300, 0]}
-        borderRadius={10}
-        renderContent={renderContent}
-      />
-    </>
+    <BottomSheet
+      ref={bottomSheetRef}
+      snapPoints={[0, 300]}
+      borderRadius={10}
+      renderContent={renderContent}
+    />
   );
 };

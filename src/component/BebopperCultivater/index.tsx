@@ -4,6 +4,7 @@ import React, {
   useContext,
   useReducer,
   Dispatch,
+  MutableRefObject,
 } from "react";
 
 import { TotalInfo } from "src/model/music/base";
@@ -16,11 +17,15 @@ import {
 
 import { Container } from "src/component/BebopperCultivater/Container";
 import { info } from "src/component/BebopperCultivater/dummyData";
+import BottomSheet from "reanimated-bottom-sheet";
+
+type BottomSheetRef = MutableRefObject<BottomSheet | null>;
 
 type ContextType = {
   state: State;
   setState: Dispatch<Action>;
   fetchedData: TotalInfo;
+  bottomSheetRef: BottomSheetRef;
 };
 
 const Context = createContext<ContextType>({
@@ -29,12 +34,15 @@ const Context = createContext<ContextType>({
     totalInfo: null,
   },
   fetchedData: info,
+  bottomSheetRef: (null as unknown) as BottomSheetRef,
 });
 
 export const useContextHook = () => useContext(Context);
 
 const Provider: FC = ({ children }) => {
   const fetchedData = info;
+
+  const bottomSheetRef = React.useRef<BottomSheet | null>(null);
 
   const [state, setState] = useReducer(makeReducer(), {
     totalInfo: null,
@@ -46,6 +54,7 @@ const Provider: FC = ({ children }) => {
         setState,
         state,
         fetchedData,
+        bottomSheetRef,
       }}
     >
       {children}
