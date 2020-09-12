@@ -5,6 +5,8 @@ import { MainInfo } from "src/component/BebopperCultivater/MainInfo";
 import { Bar } from "src/component/BebopperCultivater/Bar";
 import { useContextHook } from "src/component/BebopperCultivater";
 
+import { BottomSheetComp } from "src/component/BebopperCultivater/BottomSheet";
+
 const styles = StyleSheet.create({
   base: {
     backgroundColor: "red",

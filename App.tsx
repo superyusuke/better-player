@@ -4,13 +4,16 @@ import { Text, View } from "react-native";
 
 import { BebopperCultivater } from "src/component/BebopperCultivater";
 
-export default function App() {
-  const [pickerValue, setPickerValue] = useState<string>("java");
+import { BottomSheetComp } from "src/component/BebopperCultivater/BottomSheet";
 
+export default function App() {
   return (
-    <View style={{ padding: 20, flex: 1 }}>
-      <BebopperCultivater />
-      <StatusBar style="auto" />
+    <View style={{ flex: 1 }}>
+      <BottomSheetComp />
+      <View style={{ padding: 20, flex: 1 }}>
+        <BebopperCultivater />
+        <StatusBar style="auto" />
+      </View>
     </View>
   );
 }
