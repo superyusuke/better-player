@@ -15,7 +15,6 @@ export const MainInfo = () => {
   return (
     <View style={styles.wrapper}>
       <Reset />
-      <Text>MainInfo</Text>
       <Button
         title={"osu"}
         onPress={() => {
@@ -24,16 +23,6 @@ export const MainInfo = () => {
           }
         }}
       />
-      <Button
-        title={"manipulateToBottomSheetRef"}
-        onPress={() => {
-          setState({
-            type: "manipulateToBottomSheetRef",
-            payload: {},
-          });
-        }}
-      />
-      <Text>2222</Text>
     </View>
   );
 };

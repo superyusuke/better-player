@@ -62,9 +62,11 @@ type SetAccidentalOfTargetNoteIndexOfTargetBar = {
   };
 };
 
-type ManipulateToBottomSheetRef = {
-  type: "manipulateToBottomSheetRef";
-  payload: {};
+type SelectBar = {
+  type: "selectBar";
+  payload: {
+    targetBar: number;
+  };
 };
 
 export type Action =
@@ -74,7 +76,7 @@ export type Action =
   | Reset
   | SetNoteNumberOfTargetNoteIndexOfTargetBar
   | SetAccidentalOfTargetNoteIndexOfTargetBar
-  | ManipulateToBottomSheetRef;
+  | SelectBar;
 
 type Props = {
   bottomSheetRef: React.MutableRefObject<BottomSheetBehavior | null>;
@@ -86,9 +88,16 @@ export const makeReducer = (props: Props) => (
 ): State => {
   const { bottomSheetRef } = props;
 
-  if (action.type === "manipulateToBottomSheetRef") {
+  if (action.type === "selectBar") {
     if (bottomSheetRef.current) {
       bottomSheetRef.current.snapTo(1);
+      return {
+        ...state,
+        selected: {
+          ...state.selected,
+          bar: action.payload.targetBar,
+        },
+      };
     }
   }
 
