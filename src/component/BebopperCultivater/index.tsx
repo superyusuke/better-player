@@ -45,15 +45,10 @@ const Provider: FC = ({ children }) => {
 
   const bottomSheetRef = React.useRef<BottomSheet | null>(null);
 
-  const [state, setState] = useReducer(
-    makeReducer({
-      bottomSheetRef,
-    }),
-    {
-      totalInfo: null,
-      selected: null,
-    }
-  );
+  const [state, setState] = useReducer(makeReducer(), {
+    totalInfo: null,
+    selected: null,
+  });
 
   return fetchedData ? (
     <Context.Provider

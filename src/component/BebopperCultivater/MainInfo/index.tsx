@@ -21,6 +21,12 @@ export const MainInfo = () => {
           if (bottomSheetRef.current) {
             bottomSheetRef.current.snapTo(1);
           }
+          setState({
+            type: "selectBar",
+            payload: {
+              targetBar: 1,
+            },
+          });
         }}
       />
     </View>

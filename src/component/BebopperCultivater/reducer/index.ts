@@ -9,9 +9,6 @@ import { setDurationOfTargetBar } from "src/component/BebopperCultivater/reducer
 import { reset } from "src/component/BebopperCultivater/reducer/reset";
 import { setNoteNumberOfTargetNoteIndexOfTargetBar } from "src/component/BebopperCultivater/reducer/setNoteNumberOfTargetNoteIndexOfTargetBar";
 import { setAccidentalOfTargetNoteIndexOfTargetBar } from "src/component/BebopperCultivater/reducer/setAccidentalOfTargetNoteIndexOfTargetBar";
-import React from "react";
-
-import BottomSheetBehavior from "reanimated-bottom-sheet";
 
 type Selected = {
   bar: number;
@@ -78,27 +75,15 @@ export type Action =
   | SetAccidentalOfTargetNoteIndexOfTargetBar
   | SelectBar;
 
-type Props = {
-  bottomSheetRef: React.MutableRefObject<BottomSheetBehavior | null>;
-};
-
-export const makeReducer = (props: Props) => (
-  state: State,
-  action: Action
-): State => {
-  const { bottomSheetRef } = props;
-
+export const makeReducer = () => (state: State, action: Action): State => {
   if (action.type === "selectBar") {
-    if (bottomSheetRef.current) {
-      bottomSheetRef.current.snapTo(1);
-      return {
-        ...state,
-        selected: {
-          ...state.selected,
-          bar: action.payload.targetBar,
-        },
-      };
-    }
+    return {
+      ...state,
+      selected: {
+        ...state.selected,
+        bar: action.payload.targetBar,
+      },
+    };
   }
 
   if (action.type === "setInitialFetchedData") {
