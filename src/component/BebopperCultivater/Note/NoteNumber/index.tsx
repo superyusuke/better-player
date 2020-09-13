@@ -1,6 +1,6 @@
 import React from "react";
-import { View, StyleSheet, Text } from "react-native";
-import RNPickerSelect from "react-native-picker-select";
+import { View, StyleSheet } from "react-native";
+import RNPickerSelect, { PickerStyle } from "react-native-picker-select";
 
 import {
   NoteNumber as NoteNumberType,
@@ -9,12 +9,44 @@ import {
 
 import { useContextHook } from "src/component/BebopperCultivater";
 
-const styles = StyleSheet.create({
-  wrapper: {
-    justifyContent: "center",
-    alignItems: "center",
-  },
-});
+type SelectStyles = {
+  manipulateMode: boolean;
+};
+
+const selectStyles = (props: SelectStyles) => {
+  const { manipulateMode } = props;
+
+  if (manipulateMode) {
+    return StyleSheet.create({
+      wrapper: {
+        justifyContent: "center",
+        alignItems: "center",
+      },
+    });
+  }
+
+  return StyleSheet.create({
+    wrapper: {
+      justifyContent: "center",
+      alignItems: "center",
+    },
+  });
+};
+
+const selectPickerStyles = (props: SelectStyles): PickerStyle => {
+  const { manipulateMode } = props;
+  if (manipulateMode) {
+    return {
+      inputIOS: {
+        fontSize: 25,
+        paddingVertical: 20,
+        paddingHorizontal: 20,
+        backgroundColor: "red",
+      },
+    };
+  }
+  return {};
+};
 
 type Props = {
   noteNumber: NoteNumberType | null;
@@ -27,12 +59,17 @@ export const NoteNumber = (props: Props) => {
   const { setState } = useContextHook();
   const { noteNumber, noteIndex, barIndex, manipulateMode } = props;
 
+  const styles = selectStyles({ manipulateMode });
+
+  const pickerStyles = selectPickerStyles({ manipulateMode });
+
   return (
     <View style={styles.wrapper}>
       <RNPickerSelect
         disabled={!manipulateMode}
         value={noteNumber}
         placeholder={{}}
+        style={pickerStyles}
         onValueChange={(value) =>
           setState({
             type: "setNoteNumberOfTargetNoteIndexOfTargetBar",

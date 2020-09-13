@@ -1,23 +1,46 @@
 import React from "react";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, StyleSheetProperties } from "react-native";
 import RNPickerSelect from "react-native-picker-select";
 import { Note } from "src/component/BebopperCultivater/Note";
 import { useContextHook } from "src/component/BebopperCultivater";
 
 import { BarMeta } from "src/model/music/base";
 
-const styles = StyleSheet.create({
-  wrapper: {
-    width: "25%",
-    flexDirection: "column",
-  },
-  bar: {
-    flexDirection: "row",
-    borderWidth: 2,
-    borderColor: "green",
-    height: 50,
-  },
-});
+type SelectStyles = {
+  manipulateMode: boolean;
+};
+
+const selectStyles = (props: SelectStyles) => {
+  const { manipulateMode } = props;
+
+  if (manipulateMode) {
+    return StyleSheet.create({
+      wrapper: {
+        width: "100%",
+        flexDirection: "column",
+      },
+      bar: {
+        flexDirection: "row",
+        borderWidth: 2,
+        borderColor: "green",
+        // height: 50,
+      },
+    });
+  }
+
+  return StyleSheet.create({
+    wrapper: {
+      width: "25%",
+      flexDirection: "column",
+    },
+    bar: {
+      flexDirection: "row",
+      borderWidth: 2,
+      borderColor: "green",
+      height: 50,
+    },
+  });
+};
 
 type Props = {
   manipulateMode: boolean;
@@ -29,6 +52,8 @@ export const Bar = (props: Props) => {
   const { setState } = useContextHook();
   const { bar, barNumber, manipulateMode } = props;
   const { noteList, duration } = bar;
+
+  const styles = selectStyles({ manipulateMode });
 
   return (
     <View style={styles.wrapper}>
