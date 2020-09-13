@@ -20,27 +20,17 @@ type Props = {
   noteNumber: NoteNumberType | null;
   barIndex: number;
   noteIndex: number;
+  manipulateMode: boolean;
 };
 
 export const NoteNumber = (props: Props) => {
   const { setState } = useContextHook();
-  const { noteNumber, noteIndex, barIndex } = props;
+  const { noteNumber, noteIndex, barIndex, manipulateMode } = props;
 
   return (
     <View style={styles.wrapper}>
       <RNPickerSelect
-        // style={{
-        //   iconContainer: {
-        //     backgroundColor: "green",
-        //     width: 10,
-        //     height: 10,
-        //   },
-        //   viewContainer: {
-        //     backgroundColor: "green",
-        //     width: 10,
-        //     height: 10,
-        //   },
-        // }}
+        disabled={!manipulateMode}
         value={noteNumber}
         placeholder={{}}
         onValueChange={(value) =>

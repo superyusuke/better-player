@@ -39,7 +39,14 @@ export const UI = () => {
         <MainInfo />
         <View style={styles.barList}>
           {state.totalInfo.barMetaList.map((bar, index) => {
-            return <Bar bar={bar} key={index} barNumber={index + 1} />;
+            return (
+              <Bar
+                manipulateMode={false}
+                bar={bar}
+                key={index}
+                barNumber={index + 1}
+              />
+            );
           })}
         </View>
       </View>

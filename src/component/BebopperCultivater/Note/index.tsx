@@ -20,13 +20,14 @@ const styles = StyleSheet.create({
 });
 
 type Props = {
+  manipulateMode: boolean;
   note: NoteMeta | null;
   barIndex: number;
   noteIndex: number;
 };
 
 export const Note = (props: Props) => {
-  const { note, barIndex, noteIndex } = props;
+  const { note, barIndex, noteIndex, manipulateMode } = props;
 
   return (
     <View style={styles.wrapper}>
@@ -34,11 +35,13 @@ export const Note = (props: Props) => {
         accidentalNumber={note ? note.accidentalNumber : null}
         barIndex={barIndex}
         noteIndex={noteIndex}
+        manipulateMode={manipulateMode}
       />
       <NoteNumber
         noteNumber={note ? note.noteNumber : null}
         barIndex={barIndex}
         noteIndex={noteIndex}
+        manipulateMode={manipulateMode}
       />
     </View>
   );

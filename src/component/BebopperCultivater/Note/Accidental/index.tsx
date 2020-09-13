@@ -18,15 +18,17 @@ type Props = {
   accidentalNumber: AccidentalNumber | null;
   barIndex: number;
   noteIndex: number;
+  manipulateMode: boolean;
 };
 
 export const Accidental = (props: Props) => {
   const { setState } = useContextHook();
-  const { accidentalNumber, barIndex, noteIndex } = props;
+  const { accidentalNumber, barIndex, noteIndex, manipulateMode } = props;
 
   return (
     <View style={styles.wrapper}>
       <RNPickerSelect
+        disabled={!manipulateMode}
         value={accidentalNumber}
         placeholder={{}}
         onValueChange={(value) => {

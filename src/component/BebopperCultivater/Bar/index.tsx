@@ -16,24 +16,24 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: "green",
     height: 50,
-    // justifyContent: "center",
-    // alignItems: "center",
   },
 });
 
 type Props = {
+  manipulateMode: boolean;
   bar: BarMeta;
   barNumber: number;
 };
 
 export const Bar = (props: Props) => {
   const { setState } = useContextHook();
-  const { bar, barNumber } = props;
+  const { bar, barNumber, manipulateMode } = props;
   const { noteList, duration } = bar;
 
   return (
     <View style={styles.wrapper}>
       <RNPickerSelect
+        disabled={!manipulateMode}
         value={duration}
         placeholder={{}}
         onValueChange={(value) => {
@@ -53,7 +53,13 @@ export const Bar = (props: Props) => {
       />
       <View style={styles.bar}>
         {noteList.map((note, i) => (
-          <Note note={note} key={i} barIndex={barNumber} noteIndex={i + 1} />
+          <Note
+            note={note}
+            key={i}
+            barIndex={barNumber}
+            noteIndex={i + 1}
+            manipulateMode={manipulateMode}
+          />
         ))}
       </View>
     </View>
