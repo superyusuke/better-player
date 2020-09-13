@@ -66,7 +66,6 @@ export const Bar = (props: Props) => {
             },
           });
           if (bottomSheetRef.current) {
-            console.log("currentaru");
             bottomSheetRef.current.snapTo(1);
           }
         }}

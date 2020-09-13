@@ -10,10 +10,10 @@ import { BottomSheetComp } from "src/component/BebopperCultivater/BottomSheet";
 const styles = StyleSheet.create({
   zero: {
     flex: 1,
-    backgroundColor: "gray",
+    // backgroundColor: "gray",
   },
   base: {
-    backgroundColor: "red",
+    // backgroundColor: "red",
     flex: 1,
     flexDirection: "column",
     margin: 15,

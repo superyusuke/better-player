@@ -72,7 +72,7 @@ export const noteNumberListForPicker: PickerSelectProps["items"] = noteNumberLis
     if (o === null) {
       return {
         value: 0,
-        label: "-",
+        label: " ",
       };
     }
 
