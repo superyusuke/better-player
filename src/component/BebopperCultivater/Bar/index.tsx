@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet, StyleSheetProperties } from "react-native";
+import { View, StyleSheet, TouchableOpacity } from "react-native";
 import RNPickerSelect from "react-native-picker-select";
 import { Note } from "src/component/BebopperCultivater/Note";
 import { useContextHook } from "src/component/BebopperCultivater";
@@ -49,7 +49,7 @@ type Props = {
 };
 
 export const Bar = (props: Props) => {
-  const { setState } = useContextHook();
+  const { setState, bottomSheetRef } = useContextHook();
   const { bar, barNumber, manipulateMode } = props;
   const { noteList, duration } = bar;
 
@@ -57,36 +57,51 @@ export const Bar = (props: Props) => {
 
   return (
     <View style={styles.wrapper}>
-      <RNPickerSelect
-        disabled={!manipulateMode}
-        value={duration}
-        placeholder={{}}
-        onValueChange={(value) => {
+      <TouchableOpacity
+        onPress={() => {
+          if (bottomSheetRef.current) {
+            bottomSheetRef.current.snapTo(1);
+          }
+
           setState({
-            type: "setDurationOfTargetBar",
+            type: "selectBar",
             payload: {
-              duration: value,
               targetBar: barNumber,
             },
           });
         }}
-        items={[
-          { label: "8", value: 8 },
-          { label: "4", value: 4 },
-          { label: "16", value: 16 },
-        ]}
-      />
-      <View style={styles.bar}>
-        {noteList.map((note, i) => (
-          <Note
-            note={note}
-            key={i}
-            barIndex={barNumber}
-            noteIndex={i + 1}
-            manipulateMode={manipulateMode}
-          />
-        ))}
-      </View>
+      >
+        <RNPickerSelect
+          disabled={!manipulateMode}
+          value={duration}
+          placeholder={{}}
+          onValueChange={(value) => {
+            setState({
+              type: "setDurationOfTargetBar",
+              payload: {
+                duration: value,
+                targetBar: barNumber,
+              },
+            });
+          }}
+          items={[
+            { label: "8", value: 8 },
+            { label: "4", value: 4 },
+            { label: "16", value: 16 },
+          ]}
+        />
+        <View style={styles.bar}>
+          {noteList.map((note, i) => (
+            <Note
+              note={note}
+              key={i}
+              barIndex={barNumber}
+              noteIndex={i + 1}
+              manipulateMode={manipulateMode}
+            />
+          ))}
+        </View>
+      </TouchableOpacity>
     </View>
   );
 };
