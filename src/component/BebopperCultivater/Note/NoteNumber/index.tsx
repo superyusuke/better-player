@@ -41,7 +41,7 @@ const selectPickerStyles = (props: SelectStyles): PickerStyle => {
         fontSize: 25,
         paddingVertical: 20,
         paddingHorizontal: 20,
-        backgroundColor: "red",
+        backgroundColor: "lightgray",
       },
     };
   }

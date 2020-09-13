@@ -22,10 +22,11 @@ const selectPickerStyles = (props: SelectStyles): PickerStyle => {
   if (manipulateMode) {
     return {
       inputIOS: {
-        backgroundColor: "yellow",
+        backgroundColor: "lightgray",
         fontSize: 15,
         paddingVertical: 10,
         paddingHorizontal: 20,
+        marginBottom: 5,
       },
     };
   }

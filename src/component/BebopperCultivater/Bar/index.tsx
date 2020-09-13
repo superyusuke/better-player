@@ -8,10 +8,11 @@ import { BarMeta } from "src/model/music/base";
 
 type SelectStyles = {
   manipulateMode: boolean;
+  borderRightWidth: number;
 };
 
 const selectStyles = (props: SelectStyles) => {
-  const { manipulateMode } = props;
+  const { manipulateMode, borderRightWidth } = props;
 
   if (manipulateMode) {
     return StyleSheet.create({
@@ -21,9 +22,8 @@ const selectStyles = (props: SelectStyles) => {
       },
       bar: {
         flexDirection: "row",
-        borderWidth: 2,
-        borderColor: "green",
-        // height: 50,
+        borderRightWidth: 1,
+        borderColor: "blue",
       },
     });
   }
@@ -35,9 +35,8 @@ const selectStyles = (props: SelectStyles) => {
     },
     bar: {
       flexDirection: "row",
-      borderWidth: 2,
-      borderColor: "green",
-      height: 50,
+      borderRightWidth: borderRightWidth,
+      borderColor: "blue",
     },
   });
 };
@@ -53,7 +52,9 @@ export const Bar = (props: Props) => {
   const { bar, barNumber, manipulateMode } = props;
   const { noteList, duration } = bar;
 
-  const styles = selectStyles({ manipulateMode });
+  const borderRightWidth = barNumber % 4 ? 0 : 1;
+
+  const styles = selectStyles({ manipulateMode, borderRightWidth });
 
   return (
     <View style={styles.wrapper}>
@@ -74,6 +75,12 @@ export const Bar = (props: Props) => {
           disabled={!manipulateMode}
           value={duration}
           placeholder={{}}
+          style={{
+            inputIOS: {
+              fontSize: 20,
+              // textAlign: "right",
+            },
+          }}
           onValueChange={(value) => {
             setState({
               type: "setDurationOfTargetBar",

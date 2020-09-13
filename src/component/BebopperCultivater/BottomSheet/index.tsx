@@ -34,13 +34,13 @@ export const BottomSheetComp = () => {
     return (
       <View
         style={{
-          backgroundColor: "white",
+          backgroundColor: "lightblue",
           padding: 16,
           height: 450,
         }}
       >
         <Button
-          title={"押したら閉じる"}
+          title={"X"}
           onPress={() => {
             if (bottomSheetRef.current) {
               bottomSheetRef.current.snapTo(0);
