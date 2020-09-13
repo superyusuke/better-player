@@ -16,7 +16,7 @@ export const MainInfo = () => {
     <View style={styles.wrapper}>
       <Reset />
       <Button
-        title={"osu"}
+        title={"1bar"}
         onPress={() => {
           if (bottomSheetRef.current) {
             bottomSheetRef.current.snapTo(1);
@@ -25,6 +25,20 @@ export const MainInfo = () => {
             type: "selectBar",
             payload: {
               targetBar: 1,
+            },
+          });
+        }}
+      />
+      <Button
+        title={"2bar"}
+        onPress={() => {
+          if (bottomSheetRef.current) {
+            bottomSheetRef.current.snapTo(1);
+          }
+          setState({
+            type: "selectBar",
+            payload: {
+              targetBar: 2,
             },
           });
         }}
