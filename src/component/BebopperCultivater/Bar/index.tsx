@@ -59,16 +59,16 @@ export const Bar = (props: Props) => {
     <View style={styles.wrapper}>
       <TouchableOpacity
         onPress={() => {
-          if (bottomSheetRef.current) {
-            bottomSheetRef.current.snapTo(1);
-          }
-
           setState({
             type: "selectBar",
             payload: {
               targetBar: barNumber,
             },
           });
+          if (bottomSheetRef.current) {
+            console.log("currentaru");
+            bottomSheetRef.current.snapTo(1);
+          }
         }}
       >
         <RNPickerSelect

@@ -24,37 +24,35 @@ const convertToBarInfo = (state: State) => {
 export const BottomSheetComp = () => {
   const { bottomSheetRef, state } = useContextHook();
 
-  if (!state.selected?.bar) {
-    return null;
-  }
-
   const barInfo = convertToBarInfo(state);
 
-  if (!barInfo) {
-    return null;
-  }
+  const barNumber = state.selected?.bar;
 
-  const barNumber = state.selected.bar;
+  const renderContent = () => {
+    if (!barInfo) return null;
 
-  const renderContent = () => (
-    <View
-      style={{
-        backgroundColor: "white",
-        padding: 16,
-        height: 450,
-      }}
-    >
-      <Button
-        title={"押したら閉じる"}
-        onPress={() => {
-          if (bottomSheetRef.current) {
-            bottomSheetRef.current.snapTo(0);
-          }
+    return (
+      <View
+        style={{
+          backgroundColor: "white",
+          padding: 16,
+          height: 450,
         }}
-      />
-      <Bar barNumber={barNumber} manipulateMode={true} bar={barInfo} />
-    </View>
-  );
+      >
+        <Button
+          title={"押したら閉じる"}
+          onPress={() => {
+            if (bottomSheetRef.current) {
+              bottomSheetRef.current.snapTo(0);
+            }
+          }}
+        />
+        {barNumber ? (
+          <Bar barNumber={barNumber} manipulateMode={true} bar={barInfo} />
+        ) : null}
+      </View>
+    );
+  };
 
   return (
     <BottomSheet
