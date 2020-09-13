@@ -3,8 +3,9 @@ import { Text, View, Button } from "react-native";
 import BottomSheet from "reanimated-bottom-sheet";
 import { useContextHook } from "src/component/BebopperCultivater";
 import { State } from "src/component/BebopperCultivater/reducer";
+import { Bar } from "src/component/BebopperCultivater/Bar";
 
-const convertToShow = (state: State) => {
+const convertToBarInfo = (state: State) => {
   const { totalInfo, selected } = state;
 
   if (!totalInfo) {
@@ -17,15 +18,23 @@ const convertToShow = (state: State) => {
 
   const barMetaList = totalInfo.barMetaList[selected.bar - 1];
 
-  const toShow = barMetaList.noteList.map((o) => o?.noteNumber);
-
-  return toShow;
+  return barMetaList;
 };
 
 export const BottomSheetComp = () => {
   const { bottomSheetRef, state } = useContextHook();
 
-  const toShow = convertToShow(state);
+  if (!state.selected?.bar) {
+    return null;
+  }
+
+  const barInfo = convertToBarInfo(state);
+
+  if (!barInfo) {
+    return null;
+  }
+
+  const barNumber = state.selected.bar;
 
   const renderContent = () => (
     <View
@@ -35,7 +44,6 @@ export const BottomSheetComp = () => {
         height: 450,
       }}
     >
-      <Text>{toShow}</Text>
       <Button
         title={"押したら閉じる"}
         onPress={() => {
@@ -44,6 +52,7 @@ export const BottomSheetComp = () => {
           }
         }}
       />
+      <Bar barNumber={barNumber} manipulateMode={true} bar={barInfo} />
     </View>
   );
 
