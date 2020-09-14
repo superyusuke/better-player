@@ -16,17 +16,6 @@ const selectStyles = (props: SelectStyles) => {
   const { manipulateMode, borderRightWidth, isSelected } = props;
 
   if (manipulateMode) {
-    return StyleSheet.create({
-      wrapper: {
-        width: "100%",
-        flexDirection: "column",
-      },
-      bar: {
-        flexDirection: "row",
-        borderRightWidth: 1,
-        borderColor: "blue",
-      },
-    });
   }
 
   return StyleSheet.create({
@@ -44,27 +33,26 @@ const selectStyles = (props: SelectStyles) => {
 };
 
 type Props = {
-  manipulateMode: boolean;
   bar: BarMeta;
   barNumber: number;
 };
 
+const styles = StyleSheet.create({
+  wrapper: {
+    width: "100%",
+    flexDirection: "column",
+  },
+  bar: {
+    flexDirection: "row",
+    borderRightWidth: 1,
+    borderColor: "blue",
+  },
+});
+
 export const BarManipulate = (props: Props) => {
-  const { setState, bottomSheetRef, state } = useContextHook();
-  const { bar, barNumber, manipulateMode } = props;
+  const { setState, bottomSheetRef } = useContextHook();
+  const { bar, barNumber } = props;
   const { noteList, duration } = bar;
-
-  const isSelected = state.selected ? state.selected.bar === barNumber : false;
-  const totalBarLength = state.totalInfo?.barMetaList.length;
-
-  const borderRightWidth =
-    totalBarLength === barNumber ? 1 : barNumber % 4 ? 0 : 1;
-
-  const styles = selectStyles({
-    manipulateMode,
-    borderRightWidth,
-    isSelected,
-  });
 
   return (
     <View style={styles.wrapper}>
@@ -82,7 +70,6 @@ export const BarManipulate = (props: Props) => {
         }}
       >
         <RNPickerSelect
-          disabled={!manipulateMode}
           value={duration}
           placeholder={{}}
           style={{
@@ -113,7 +100,7 @@ export const BarManipulate = (props: Props) => {
               key={i}
               barIndex={barNumber}
               noteIndex={i + 1}
-              manipulateMode={manipulateMode}
+              manipulateMode={true}
             />
           ))}
         </View>

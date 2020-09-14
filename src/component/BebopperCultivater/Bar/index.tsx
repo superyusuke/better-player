@@ -14,20 +14,8 @@ export const Bar = (props: Props) => {
   const { barNumber, manipulateMode, bar } = props;
 
   if (manipulateMode) {
-    return (
-      <BarManipulate
-        bar={bar}
-        manipulateMode={manipulateMode}
-        barNumber={barNumber}
-      />
-    );
+    return <BarManipulate bar={bar} barNumber={barNumber} />;
   }
 
-  return (
-    <BarDisplay
-      bar={bar}
-      manipulateMode={manipulateMode}
-      barNumber={barNumber}
-    />
-  );
+  return <BarDisplay bar={bar} barNumber={barNumber} />;
 };

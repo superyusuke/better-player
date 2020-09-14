@@ -6,30 +6,23 @@ import { useContextHook } from "src/component/BebopperCultivater";
 
 import { BarMeta } from "src/model/music/base";
 
-type SelectStyles = {
-  manipulateMode: boolean;
-  borderRightWidth: number;
-  isSelected: boolean;
+type Props = {
+  bar: BarMeta;
+  barNumber: number;
 };
 
-const selectStyles = (props: SelectStyles) => {
-  const { manipulateMode, borderRightWidth, isSelected } = props;
+export const BarDisplay = (props: Props) => {
+  const { setState, bottomSheetRef, state } = useContextHook();
+  const { bar, barNumber } = props;
+  const { noteList, duration } = bar;
 
-  if (manipulateMode) {
-    return StyleSheet.create({
-      wrapper: {
-        width: "100%",
-        flexDirection: "column",
-      },
-      bar: {
-        flexDirection: "row",
-        borderRightWidth: 1,
-        borderColor: "blue",
-      },
-    });
-  }
+  const isSelected = state.selected ? state.selected.bar === barNumber : false;
+  const totalBarLength = state.totalInfo?.barMetaList.length;
 
-  return StyleSheet.create({
+  const borderRightWidth =
+    totalBarLength === barNumber ? 1 : barNumber % 4 ? 0 : 1;
+
+  const styles = StyleSheet.create({
     wrapper: {
       width: "25%",
       flexDirection: "column",
@@ -40,30 +33,6 @@ const selectStyles = (props: SelectStyles) => {
       borderColor: "blue",
       backgroundColor: isSelected ? "red" : undefined,
     },
-  });
-};
-
-type Props = {
-  manipulateMode: boolean;
-  bar: BarMeta;
-  barNumber: number;
-};
-
-export const BarDisplay = (props: Props) => {
-  const { setState, bottomSheetRef, state } = useContextHook();
-  const { bar, barNumber, manipulateMode } = props;
-  const { noteList, duration } = bar;
-
-  const isSelected = state.selected ? state.selected.bar === barNumber : false;
-  const totalBarLength = state.totalInfo?.barMetaList.length;
-
-  const borderRightWidth =
-    totalBarLength === barNumber ? 1 : barNumber % 4 ? 0 : 1;
-
-  const styles = selectStyles({
-    manipulateMode,
-    borderRightWidth,
-    isSelected,
   });
 
   return (
@@ -89,7 +58,7 @@ export const BarDisplay = (props: Props) => {
               key={i}
               barIndex={barNumber}
               noteIndex={i + 1}
-              manipulateMode={manipulateMode}
+              manipulateMode={false}
             />
           ))}
         </View>
