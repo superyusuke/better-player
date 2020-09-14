@@ -1,6 +1,6 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
-import RNPickerSelect, { PickerStyle } from "react-native-picker-select";
+import RNPickerSelect from "react-native-picker-select";
 
 import {
   NoteNumber as NoteNumberType,
@@ -9,67 +9,36 @@ import {
 
 import { useContextHook } from "src/component/BebopperCultivater";
 
-type SelectStyles = {
-  manipulateMode: boolean;
-};
-
-const selectStyles = (props: SelectStyles) => {
-  const { manipulateMode } = props;
-
-  if (manipulateMode) {
-    return StyleSheet.create({
-      wrapper: {
-        justifyContent: "center",
-        alignItems: "center",
-      },
-    });
-  }
-
-  return StyleSheet.create({
-    wrapper: {
-      justifyContent: "center",
-      alignItems: "center",
-    },
-  });
-};
-
-const selectPickerStyles = (props: SelectStyles): PickerStyle => {
-  const { manipulateMode } = props;
-  if (manipulateMode) {
-    return {
-      inputIOS: {
-        fontSize: 25,
-        paddingVertical: 20,
-        paddingHorizontal: 20,
-        backgroundColor: "lightgray",
-      },
-    };
-  }
-  return {};
-};
+const styles = StyleSheet.create({
+  wrapper: {
+    justifyContent: "center",
+    alignItems: "center",
+  },
+});
 
 type Props = {
   noteNumber: NoteNumberType | null;
   barIndex: number;
   noteIndex: number;
-  manipulateMode: boolean;
 };
 
 export const NoteNumber = (props: Props) => {
   const { setState } = useContextHook();
-  const { noteNumber, noteIndex, barIndex, manipulateMode } = props;
-
-  const styles = selectStyles({ manipulateMode });
-
-  const pickerStyles = selectPickerStyles({ manipulateMode });
+  const { noteNumber, noteIndex, barIndex } = props;
 
   return (
     <View style={styles.wrapper}>
       <RNPickerSelect
-        disabled={!manipulateMode}
         value={noteNumber}
         placeholder={{}}
-        style={pickerStyles}
+        style={{
+          inputIOS: {
+            fontSize: 25,
+            paddingVertical: 20,
+            paddingHorizontal: 20,
+            backgroundColor: "lightgray",
+          },
+        }}
         onValueChange={(value) =>
           setState({
             type: "setNoteNumberOfTargetNoteIndexOfTargetBar",

@@ -15,21 +15,9 @@ export const Note = (props: Props) => {
 
   if (manipulateMode) {
     return (
-      <NoteManipulate
-        manipulateMode={manipulateMode}
-        barIndex={barIndex}
-        note={note}
-        noteIndex={noteIndex}
-      />
+      <NoteManipulate barIndex={barIndex} note={note} noteIndex={noteIndex} />
     );
   }
 
-  return (
-    <NoteDisplay
-      manipulateMode={manipulateMode}
-      barIndex={barIndex}
-      note={note}
-      noteIndex={noteIndex}
-    />
-  );
+  return <NoteDisplay note={note} />;
 };
