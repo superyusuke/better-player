@@ -36,7 +36,7 @@ export const BottomSheetComp = () => {
         style={{
           backgroundColor: "lightblue",
           padding: 16,
-          height: 450,
+          height: "100%",
         }}
       >
         <Button

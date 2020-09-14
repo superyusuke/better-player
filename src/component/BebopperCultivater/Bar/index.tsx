@@ -9,10 +9,11 @@ import { BarMeta } from "src/model/music/base";
 type SelectStyles = {
   manipulateMode: boolean;
   borderRightWidth: number;
+  isSelected: boolean;
 };
 
 const selectStyles = (props: SelectStyles) => {
-  const { manipulateMode, borderRightWidth } = props;
+  const { manipulateMode, borderRightWidth, isSelected } = props;
 
   if (manipulateMode) {
     return StyleSheet.create({
@@ -37,6 +38,7 @@ const selectStyles = (props: SelectStyles) => {
       flexDirection: "row",
       borderRightWidth: borderRightWidth,
       borderColor: "blue",
+      backgroundColor: isSelected ? "red" : undefined,
     },
   });
 };
@@ -48,13 +50,21 @@ type Props = {
 };
 
 export const Bar = (props: Props) => {
-  const { setState, bottomSheetRef } = useContextHook();
+  const { setState, bottomSheetRef, state } = useContextHook();
   const { bar, barNumber, manipulateMode } = props;
   const { noteList, duration } = bar;
 
-  const borderRightWidth = barNumber % 4 ? 0 : 1;
+  const isSelected = state.selected ? state.selected.bar === barNumber : false;
+  const totalBarLength = state.totalInfo?.barMetaList.length;
 
-  const styles = selectStyles({ manipulateMode, borderRightWidth });
+  const borderRightWidth =
+    totalBarLength === barNumber ? 1 : barNumber % 4 ? 0 : 1;
+
+  const styles = selectStyles({
+    manipulateMode,
+    borderRightWidth,
+    isSelected,
+  });
 
   return (
     <View style={styles.wrapper}>

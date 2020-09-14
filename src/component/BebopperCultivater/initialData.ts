@@ -39,10 +39,5 @@ export const initialData: TotalInfo = {
       chordList: [],
       noteList: [null, null],
     },
-    {
-      duration: 8,
-      chordList: [],
-      noteList: [null, null],
-    },
   ],
 };
