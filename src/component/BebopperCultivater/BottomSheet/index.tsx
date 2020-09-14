@@ -22,7 +22,7 @@ const convertToBarInfo = (state: State) => {
 };
 
 export const BottomSheetComp = () => {
-  const { bottomSheetRef, state } = useContextHook();
+  const { bottomSheetRef, state, setState } = useContextHook();
 
   const barInfo = convertToBarInfo(state);
 
@@ -60,6 +60,14 @@ export const BottomSheetComp = () => {
       snapPoints={[0, 300]}
       borderRadius={10}
       renderContent={renderContent}
+      onCloseStart={() => {
+        setState({
+          type: "selectBar",
+          payload: {
+            targetBar: null,
+          },
+        });
+      }}
     />
   );
 };

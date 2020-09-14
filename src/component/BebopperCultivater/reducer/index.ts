@@ -62,7 +62,7 @@ type SetAccidentalOfTargetNoteIndexOfTargetBar = {
 type SelectBar = {
   type: "selectBar";
   payload: {
-    targetBar: number;
+    targetBar: number | null;
   };
 };
 
@@ -77,12 +77,13 @@ export type Action =
 
 export const makeReducer = () => (state: State, action: Action): State => {
   if (action.type === "selectBar") {
+    const newSelected = action.payload.targetBar
+      ? { bar: action.payload.targetBar }
+      : null;
+
     return {
       ...state,
-      selected: {
-        ...state.selected,
-        bar: action.payload.targetBar,
-      },
+      selected: newSelected,
     };
   }
 
