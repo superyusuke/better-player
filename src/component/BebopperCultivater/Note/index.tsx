@@ -1,23 +1,7 @@
 import React from "react";
-import { View, StyleSheet } from "react-native";
-
+import { NoteDisplay } from "src/component/BebopperCultivater/Note/NoteDisplay";
+import { NoteManipulate } from "src/component/BebopperCultivater/Note/NoteManipulate";
 import { NoteMeta } from "src/model/music/base";
-
-import { NoteNumber } from "src/component/BebopperCultivater/Note/NoteNumber";
-import { Accidental } from "src/component/BebopperCultivater/Note/Accidental";
-
-const styles = StyleSheet.create({
-  wrapper: {
-    borderColor: "blue",
-    flexDirection: "column",
-    borderBottomWidth: 1,
-    borderLeftWidth: 1,
-    borderTopWidth: 1,
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-});
 
 type Props = {
   manipulateMode: boolean;
@@ -27,22 +11,25 @@ type Props = {
 };
 
 export const Note = (props: Props) => {
-  const { note, barIndex, noteIndex, manipulateMode } = props;
+  const { manipulateMode, noteIndex, barIndex, note } = props;
+
+  if (manipulateMode) {
+    return (
+      <NoteManipulate
+        manipulateMode={manipulateMode}
+        barIndex={barIndex}
+        note={note}
+        noteIndex={noteIndex}
+      />
+    );
+  }
 
   return (
-    <View style={styles.wrapper}>
-      <Accidental
-        accidentalNumber={note ? note.accidentalNumber : null}
-        barIndex={barIndex}
-        noteIndex={noteIndex}
-        manipulateMode={manipulateMode}
-      />
-      <NoteNumber
-        noteNumber={note ? note.noteNumber : null}
-        barIndex={barIndex}
-        noteIndex={noteIndex}
-        manipulateMode={manipulateMode}
-      />
-    </View>
+    <NoteDisplay
+      manipulateMode={manipulateMode}
+      barIndex={barIndex}
+      note={note}
+      noteIndex={noteIndex}
+    />
   );
 };
