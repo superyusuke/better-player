@@ -16,9 +16,6 @@ const styles = StyleSheet.create({
 
 type Props = {
   noteNumber: NoteNumberType | null;
-  barIndex: number;
-  noteIndex: number;
-  manipulateMode: boolean;
 };
 
 export const NoteNumber = (props: Props) => {

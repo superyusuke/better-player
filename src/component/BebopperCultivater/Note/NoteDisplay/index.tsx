@@ -20,29 +20,16 @@ const styles = StyleSheet.create({
 });
 
 type Props = {
-  manipulateMode: boolean;
   note: NoteMeta | null;
-  barIndex: number;
-  noteIndex: number;
 };
 
 export const NoteDisplay = (props: Props) => {
-  const { note, barIndex, noteIndex, manipulateMode } = props;
+  const { note } = props;
 
   return (
     <View style={styles.wrapper}>
-      <Accidental
-        accidentalNumber={note ? note.accidentalNumber : null}
-        barIndex={barIndex}
-        noteIndex={noteIndex}
-        manipulateMode={manipulateMode}
-      />
-      <NoteNumber
-        noteNumber={note ? note.noteNumber : null}
-        barIndex={barIndex}
-        noteIndex={noteIndex}
-        manipulateMode={manipulateMode}
-      />
+      <Accidental accidentalNumber={note ? note.accidentalNumber : null} />
+      <NoteNumber noteNumber={note ? note.noteNumber : null} />
     </View>
   );
 };
