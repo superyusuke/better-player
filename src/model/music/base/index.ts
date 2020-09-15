@@ -21,6 +21,27 @@ export type Key =
   | "Gb"
   | "Cb";
 
+export const keyListForPicker: PickerSelectProps["items"] = [
+  "C",
+  "G",
+  "D",
+  "A",
+  "E",
+  "B",
+  "F#",
+  "C#",
+  "F",
+  "Bb",
+  "Eb",
+  "Ab",
+  "Db",
+  "Gb",
+  "Cb",
+].map((key) => ({
+  value: key,
+  label: key,
+}));
+
 // C G D A E B F# C#
 // C F Bb Eb Ab Db Gb Cb
 // https://people.carleton.edu/~jellinge/m101s12/Pages/13/13KeySignatures.html

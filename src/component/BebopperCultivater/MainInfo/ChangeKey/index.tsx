@@ -2,7 +2,7 @@ import React from "react";
 import RNPickerSelect from "react-native-picker-select";
 
 import { useContextHook } from "src/component/BebopperCultivater";
-import { Key } from "src/model/music/base";
+import { keyListForPicker } from "src/model/music/base";
 
 type Props = {};
 
@@ -20,10 +20,6 @@ export const ChangeKey = (props: Props) => {
         },
       }}
       onValueChange={(value) => {
-        // if (value === duration) {
-        //   return;
-        // }
-
         setState({
           type: "changeKey",
           payload: {
@@ -31,14 +27,7 @@ export const ChangeKey = (props: Props) => {
           },
         });
       }}
-      items={[
-        { label: "C", value: "C" },
-        { label: "G", value: "G" },
-        { label: "D", value: "D" },
-        { label: "Eb", value: "Eb" },
-        { label: "Ab", value: "Ab" },
-        { label: "B", value: "B" },
-      ]}
+      items={keyListForPicker}
     />
   );
 };
