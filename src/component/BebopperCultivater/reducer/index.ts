@@ -18,6 +18,9 @@ type Selected = {
 export type State = {
   totalInfo: TotalInfo | null;
   selected: Selected;
+  bebopperTool: {
+    show: boolean;
+  };
 };
 
 type TestAction = {
@@ -74,6 +77,13 @@ type ChangeKey = {
   };
 };
 
+type SetBebopperToolOn = {
+  type: "setBebopperToolOn";
+  payload: {
+    on: boolean;
+  };
+};
+
 export type Action =
   | TestAction
   | SetInitialFetchedData
@@ -82,9 +92,19 @@ export type Action =
   | SetNoteNumberOfTargetNoteIndexOfTargetBar
   | SetAccidentalOfTargetNoteIndexOfTargetBar
   | SelectBar
-  | ChangeKey;
+  | ChangeKey
+  | SetBebopperToolOn;
 
 export const makeReducer = () => (state: State, action: Action): State => {
+  if (action.type === "setBebopperToolOn") {
+    return {
+      ...state,
+      bebopperTool: {
+        show: action.payload.on,
+      },
+    };
+  }
+
   if (action.type === "changeKey") {
     if (!state.totalInfo) {
       return {

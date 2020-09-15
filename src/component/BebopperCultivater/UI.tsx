@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, Text } from "react-native";
 
 import { MainInfo } from "src/component/BebopperCultivater/MainInfo";
 import { Bar } from "src/component/BebopperCultivater/Bar";
@@ -10,16 +10,13 @@ import { BottomSheetComp } from "src/component/BebopperCultivater/BottomSheet";
 const styles = StyleSheet.create({
   zero: {
     flex: 1,
-    // backgroundColor: "gray",
   },
   base: {
-    // backgroundColor: "red",
     flex: 1,
     flexDirection: "column",
     margin: 15,
   },
   barList: {
-    flex: 1,
     flexDirection: "row",
     flexWrap: "wrap",
   },
@@ -49,6 +46,7 @@ export const UI = () => {
             );
           })}
         </View>
+        {state.bebopperTool.show ? <Text>Bebopper</Text> : null}
       </View>
     </View>
   );

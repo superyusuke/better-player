@@ -33,6 +33,9 @@ const Context = createContext<ContextType>({
   state: {
     totalInfo: null,
     selected: null,
+    bebopperTool: {
+      show: false,
+    },
   },
   fetchedData: info,
   bottomSheetRef: (null as unknown) as BottomSheetRef,
@@ -48,6 +51,9 @@ const Provider: FC = ({ children }) => {
   const [state, setState] = useReducer(makeReducer(), {
     totalInfo: null,
     selected: null,
+    bebopperTool: {
+      show: false,
+    },
   });
 
   return fetchedData ? (
