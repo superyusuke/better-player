@@ -3,6 +3,7 @@ import {
   Duration,
   NoteNumber,
   AccidentalNumber,
+  Key,
 } from "src/model/music/base";
 
 import { setDurationOfTargetBar } from "src/component/BebopperCultivater/reducer/setDurationOfTargetBar";
@@ -66,6 +67,13 @@ type SelectBar = {
   };
 };
 
+type ChangeKey = {
+  type: "changeKey";
+  payload: {
+    targetKey: Key;
+  };
+};
+
 export type Action =
   | TestAction
   | SetInitialFetchedData
@@ -73,9 +81,25 @@ export type Action =
   | Reset
   | SetNoteNumberOfTargetNoteIndexOfTargetBar
   | SetAccidentalOfTargetNoteIndexOfTargetBar
-  | SelectBar;
+  | SelectBar
+  | ChangeKey;
 
 export const makeReducer = () => (state: State, action: Action): State => {
+  if (action.type === "changeKey") {
+    if (!state.totalInfo) {
+      return {
+        ...state,
+      };
+    }
+
+    return {
+      ...state,
+      totalInfo: {
+        ...state.totalInfo,
+        key: action.payload.targetKey,
+      },
+    };
+  }
   if (action.type === "selectBar") {
     const newSelected = action.payload.targetBar
       ? { bar: action.payload.targetBar }

@@ -217,31 +217,31 @@ export const KEY_LIST: KeyList = {
     ],
     "1": [
       {
-        noteMapped: "B",
+        noteMapped: "C",
         pitchClass: 2,
       },
       {
-        noteMapped: "C#",
+        noteMapped: "D",
         pitchClass: 4,
       },
       {
-        noteMapped: "D#",
+        noteMapped: "E",
         pitchClass: 6,
       },
       {
-        noteMapped: "E",
+        noteMapped: "F",
         pitchClass: 7,
       },
       {
-        noteMapped: "F#",
+        noteMapped: "G",
         pitchClass: 9,
       },
       {
-        noteMapped: "G#",
+        noteMapped: "A",
         pitchClass: 11,
       },
       {
-        noteMapped: "A#",
+        noteMapped: "B",
         pitchClass: 1,
       },
     ],
