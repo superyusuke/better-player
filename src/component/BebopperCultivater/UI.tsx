@@ -6,6 +6,7 @@ import { Bar } from "src/component/BebopperCultivater/Bar";
 import { useContextHook } from "src/component/BebopperCultivater";
 
 import { BottomSheetComp } from "src/component/BebopperCultivater/BottomSheet";
+import { BebopperTool } from "src/component/BebopperCultivater/BebopperTool";
 
 const styles = StyleSheet.create({
   zero: {
@@ -46,7 +47,7 @@ export const UI = () => {
             );
           })}
         </View>
-        {state.bebopperTool.show ? <Text>Bebopper</Text> : null}
+        {state.bebopperTool.show ? <BebopperTool /> : null}
       </View>
     </View>
   );
