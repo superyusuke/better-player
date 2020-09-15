@@ -30,12 +30,16 @@ type ToNote = {
 const toNote = (props: ToNote) => {
   const { key, accidentalNumber, noteNumber, octaveNumber } = props;
 
-  const noteInfo: ScaleItem =
+  const noteInfo: ScaleItem | undefined =
     KEY_LIST[key][accidentalNumberToJustString(accidentalNumber)][
       noteNumber - 1
     ];
 
   const octaveSymbol = octaveNumberToSymbol(octaveNumber);
+
+  if (!noteInfo) {
+    return "";
+  }
 
   return `${octaveSymbol}${noteInfo.noteMapped}`;
 };
