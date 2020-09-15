@@ -39,6 +39,9 @@ export const BarManipulate = (props: Props) => {
           },
         }}
         onValueChange={(value) => {
+          if (value === duration) {
+            return;
+          }
           setState({
             type: "setDurationOfTargetBar",
             payload: {

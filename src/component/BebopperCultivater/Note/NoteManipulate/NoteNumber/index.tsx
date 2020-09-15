@@ -39,7 +39,10 @@ export const NoteNumber = (props: Props) => {
             backgroundColor: "lightgray",
           },
         }}
-        onValueChange={(value) =>
+        onValueChange={(value) => {
+          if (value === noteNumber) {
+            return;
+          }
           setState({
             type: "setNoteNumberOfTargetNoteIndexOfTargetBar",
             payload: {
@@ -47,8 +50,8 @@ export const NoteNumber = (props: Props) => {
               targetNoteIndex: noteIndex,
               targetBarIndex: barIndex,
             },
-          })
-        }
+          });
+        }}
         items={noteNumberListForPicker}
       />
     </View>

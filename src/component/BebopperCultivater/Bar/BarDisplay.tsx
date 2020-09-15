@@ -18,6 +18,10 @@ export const BarDisplay = (props: Props) => {
   const isSelected = state.selected ? state.selected.bar === barNumber : false;
   const totalBarLength = state.totalInfo?.barMetaList.length;
 
+  if (isSelected) {
+    console.log(noteList, barNumber);
+  }
+
   const borderRightWidth =
     totalBarLength === barNumber ? 1 : barNumber % 4 ? 0 : 1;
 
