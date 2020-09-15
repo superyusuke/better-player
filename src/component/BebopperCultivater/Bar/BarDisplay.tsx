@@ -1,6 +1,5 @@
 import React from "react";
 import { View, StyleSheet, TouchableOpacity, Text } from "react-native";
-import RNPickerSelect from "react-native-picker-select";
 import { Note } from "src/component/BebopperCultivater/Note";
 import { useContextHook } from "src/component/BebopperCultivater";
 
