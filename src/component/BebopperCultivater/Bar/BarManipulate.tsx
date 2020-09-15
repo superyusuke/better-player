@@ -4,11 +4,12 @@ import RNPickerSelect from "react-native-picker-select";
 import { Note } from "src/component/BebopperCultivater/Note";
 import { useContextHook } from "src/component/BebopperCultivater";
 
-import { BarMeta } from "src/model/music/base";
+import { BarMeta, Key } from "src/model/music/base";
 
 type Props = {
   bar: BarMeta;
   barNumber: number;
+  musicKey: Key;
 };
 
 const styles = StyleSheet.create({
@@ -25,7 +26,7 @@ const styles = StyleSheet.create({
 
 export const BarManipulate = (props: Props) => {
   const { setState } = useContextHook();
-  const { bar, barNumber } = props;
+  const { bar, barNumber, musicKey } = props;
   const { noteList, duration } = bar;
 
   return (
@@ -64,6 +65,7 @@ export const BarManipulate = (props: Props) => {
             barIndex={barNumber}
             noteIndex={i + 1}
             manipulateMode={true}
+            musicKey={musicKey}
           />
         ))}
       </View>

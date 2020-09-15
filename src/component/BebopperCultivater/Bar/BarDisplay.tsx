@@ -3,16 +3,17 @@ import { View, StyleSheet, TouchableOpacity, Text } from "react-native";
 import { Note } from "src/component/BebopperCultivater/Note";
 import { useContextHook } from "src/component/BebopperCultivater";
 
-import { BarMeta } from "src/model/music/base";
+import { BarMeta, Key } from "src/model/music/base";
 
 type Props = {
   bar: BarMeta;
   barNumber: number;
+  musicKey: Key;
 };
 
 export const BarDisplay = (props: Props) => {
   const { setState, bottomSheetRef, state } = useContextHook();
-  const { bar, barNumber } = props;
+  const { bar, barNumber, musicKey } = props;
   const { noteList, duration } = bar;
 
   const isSelected = state.selected ? state.selected.bar === barNumber : false;
@@ -53,6 +54,7 @@ export const BarDisplay = (props: Props) => {
         <View style={styles.bar}>
           {noteList.map((note, i) => (
             <Note
+              musicKey={musicKey}
               note={note}
               key={i}
               barIndex={barNumber}

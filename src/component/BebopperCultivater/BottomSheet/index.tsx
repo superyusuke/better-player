@@ -28,6 +28,8 @@ export const BottomSheetComp = () => {
 
   const barNumber = state.selected?.bar;
 
+  const musicKey = state.totalInfo?.key;
+
   const renderContent = () => {
     if (!barInfo) return null;
 
@@ -48,7 +50,12 @@ export const BottomSheetComp = () => {
           }}
         />
         {barNumber ? (
-          <Bar barNumber={barNumber} manipulateMode={true} bar={barInfo} />
+          <Bar
+            barNumber={barNumber}
+            manipulateMode={true}
+            bar={barInfo}
+            musicKey={musicKey || "C"}
+          />
         ) : null}
       </View>
     );

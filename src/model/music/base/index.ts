@@ -21,6 +21,24 @@ export type Key =
   | "Gb"
   | "Cb";
 
+export const keyList = [
+  "C",
+  "G",
+  "D",
+  "A",
+  "E",
+  "B",
+  "F#",
+  "C#",
+  "F",
+  "Bb",
+  "Eb",
+  "Ab",
+  "Db",
+  "Gb",
+  "Cb",
+] as const;
+
 export const keyListForPicker: PickerSelectProps["items"] = [
   "C",
   "G",

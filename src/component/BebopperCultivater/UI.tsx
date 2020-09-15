@@ -20,6 +20,7 @@ const styles = StyleSheet.create({
   barList: {
     flexDirection: "row",
     flexWrap: "wrap",
+    borderColor: "blue",
   },
 });
 
@@ -30,6 +31,8 @@ export const UI = () => {
     return null;
   }
 
+  const musicKey = state.totalInfo.key;
+
   return (
     <View style={styles.zero}>
       <BottomSheetComp />
@@ -39,6 +42,7 @@ export const UI = () => {
           {state.totalInfo.barMetaList.map((bar, index) => {
             return (
               <Bar
+                musicKey={musicKey}
                 manipulateMode={false}
                 bar={bar}
                 key={index}

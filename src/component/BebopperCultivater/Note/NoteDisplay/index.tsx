@@ -1,7 +1,7 @@
 import React from "react";
 import { View, StyleSheet, Text } from "react-native";
 
-import { NoteMeta } from "src/model/music/base";
+import { NoteMeta, Key } from "src/model/music/base";
 
 import { NoteNumber } from "src/component/BebopperCultivater/Note/NoteDisplay/NoteNumber";
 import { NoteMapped } from "src/component/BebopperCultivater/Note/NoteDisplay/NoteMapped";
@@ -23,18 +23,17 @@ const styles = StyleSheet.create({
 
 type Props = {
   note: NoteMeta | null;
+  musicKey: Key;
 };
 
 export const NoteDisplay = (props: Props) => {
-  const { note } = props;
-
-  const { state } = useContextHook();
+  const { note, musicKey } = props;
 
   return (
     <View style={styles.wrapper}>
       <Accidental accidentalNumber={note ? note.accidentalNumber : null} />
       <NoteNumber noteNumber={note ? note.noteNumber : null} />
-      <NoteMapped noteMeta={note} musicKey={state.totalInfo?.key} />
+      <NoteMapped noteMeta={note} musicKey={musicKey} />
     </View>
   );
 };
