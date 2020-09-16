@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet, ScrollView } from "react-native";
 
 import { MainInfo } from "src/component/BebopperCultivater/MainInfo";
 import { Bar } from "src/component/BebopperCultivater/Bar";
@@ -36,7 +36,7 @@ export const UI = () => {
   return (
     <View style={styles.zero}>
       <BottomSheetComp />
-      <View style={styles.base}>
+      <ScrollView style={styles.base}>
         <MainInfo />
         <View style={styles.barList}>
           {state.totalInfo.barMetaList.map((bar, index) => {
@@ -52,7 +52,7 @@ export const UI = () => {
           })}
         </View>
         {state.bebopperTool.show ? <BebopperTool /> : null}
-      </View>
+      </ScrollView>
     </View>
   );
 };
