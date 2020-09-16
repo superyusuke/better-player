@@ -9,8 +9,6 @@ import { MultiPlatformTest } from "src/component/MultiPlatformTest";
 
 export default function App() {
   const statusBarHeight = Constants.statusBarHeight;
-
-  alert(statusBarHeight);
   return (
     <View style={{ flex: 1, paddingTop: statusBarHeight }}>
       <MultiPlatformTest />

@@ -73,16 +73,16 @@ export const info: TotalInfo = {
         },
       ],
     },
-    // {
-    //   duration: 4,
-    //   chordList: [],
-    //   noteList: [
-    //     {
-    //       noteNumber: 6,
-    //       octaveNumber: 0,
-    //       accidentalNumber: 1,
-    //     },
-    //   ],
-    // },
+    {
+      duration: 4,
+      chordList: [],
+      noteList: [
+        {
+          noteNumber: 6,
+          octaveNumber: 0,
+          accidentalNumber: 1,
+        },
+      ],
+    },
   ],
 };

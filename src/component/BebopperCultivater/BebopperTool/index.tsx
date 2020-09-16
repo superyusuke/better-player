@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet } from "react-native";
 import { useContextHook } from "src/component/BebopperCultivater";
 import { Bar } from "src/component/BebopperCultivater/Bar";
 import { keyList } from "src/model/music/base";
@@ -23,10 +23,10 @@ export const BebopperTool = (props: Props) => {
   const { barMetaList } = totalInfo;
 
   return (
-    <View style={{}}>
-      <View style={styles.barList}>
-        {keyList.map((key) =>
-          barMetaList.map((bar, index) => {
+    <View>
+      {keyList.map((key) => (
+        <View style={styles.barList}>
+          {barMetaList.map((bar, index) => {
             return (
               <Bar
                 musicKey={key}
@@ -36,9 +36,9 @@ export const BebopperTool = (props: Props) => {
                 barNumber={index + 1}
               />
             );
-          })
-        )}
-      </View>
+          })}
+        </View>
+      ))}
     </View>
   );
 };
