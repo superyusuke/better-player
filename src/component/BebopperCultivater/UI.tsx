@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
   base: {
     flex: 1,
     flexDirection: "column",
-    marginHorizontal: 15,
+    paddingHorizontal: 15,
   },
   barList: {
     flexDirection: "row",
