@@ -22,11 +22,7 @@ export const useLoadSavedKeys = (): [string[], string] => {
     };
 
     getAndSetLoadSavedKeys();
-
-    // if (searchBook !== "") {
-    //   fetchBookList();
-    // }
-  }, []); //[searchBook]);
+  }, []);
 
   return [result, loading];
 };
