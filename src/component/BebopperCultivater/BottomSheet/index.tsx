@@ -42,6 +42,21 @@ export const BottomSheetComp = () => {
         }}
       >
         <Button
+          title={"この小節を削除"}
+          onPress={() => {
+            if (bottomSheetRef.current) {
+              setState({
+                type: "deleteBar",
+                payload: {
+                  indexOfMe: barNumber ?? 0,
+                  deleteBarType: "me",
+                },
+              });
+              bottomSheetRef.current.snapTo(0);
+            }
+          }}
+        />
+        <Button
           title={"X"}
           onPress={() => {
             if (bottomSheetRef.current) {
