@@ -1,31 +1,41 @@
-import AsyncStorage from "@react-native-community/async-storage";
+import {
+  storeData,
+  getAllKeys,
+  getData,
+} from "src/model/LocalStorage/basicMethod";
+import { TotalInfo } from "src/model/music/base";
 
-type StoreData = {
-  value: any;
-  key: string;
+type SaveTotalInfo = {
+  totalInfo: TotalInfo;
+  saveKey: string;
 };
 
-export const storeData = async (props: StoreData) => {
-  const { key, value } = props;
+export const saveTotalInfo = async (props: SaveTotalInfo) => {
+  const { totalInfo, saveKey } = props;
 
-  try {
-    const jsonValue = JSON.stringify(value);
-    await AsyncStorage.setItem(key, jsonValue);
-  } catch (e) {
-    // saving error
-  }
+  await storeData({
+    key: saveKey,
+    value: totalInfo,
+  });
 };
 
-type GetData = {
-  key: string;
+type LoadTotalInfo = {
+  savedKey: string;
 };
 
-export const getData = async (props: GetData) => {
-  const { key } = props;
-  try {
-    const jsonValue = await AsyncStorage.getItem(key);
-    return jsonValue != null ? JSON.parse(jsonValue) : null;
-  } catch (e) {
-    // error reading value
-  }
+export const loadTotalInfo = async (
+  props: LoadTotalInfo
+): Promise<TotalInfo> => {
+  const { savedKey } = props;
+
+  const res = await getData({
+    key: savedKey,
+  });
+
+  return res;
+};
+
+export const getSavedAllKeys = async () => {
+  const res = await getAllKeys();
+  return res;
 };
