@@ -7,6 +7,7 @@ import { useContextHook } from "src/component/BebopperCultivater";
 
 import { BottomSheetComp } from "src/component/BebopperCultivater/BottomSheet";
 import { BebopperTool } from "src/component/BebopperCultivater/BebopperTool";
+import { LocalStorageComponent } from "src/component/BebopperCultivater/LocalStorage";
 
 const styles = StyleSheet.create({
   zero: {
@@ -36,6 +37,7 @@ export const UI = () => {
   return (
     <View style={styles.zero}>
       <BottomSheetComp />
+      <LocalStorageComponent />
       <ScrollView style={styles.base}>
         <MainInfo />
         <View style={styles.barList}>

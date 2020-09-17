@@ -9,6 +9,7 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@react-native-community/async-storage": "^1.11.0",
     "@types/jest": "^26.0.13",
     "dotenv": "^8.2.0",
     "expo": "^38.0.0",
