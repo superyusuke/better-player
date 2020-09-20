@@ -7,14 +7,16 @@ import { ChangeKey } from "src/component/BebopperCultivater/MainInfo/ChangeKey";
 import { ShowBebopper } from "src/component/BebopperCultivater/MainInfo/ShowBebopper";
 
 const styles = StyleSheet.create({
-  wrapper: {},
+  wrapper: {
+    flexDirection: "row",
+  },
 });
 
 export const MainInfo = () => {
   return (
     <View style={styles.wrapper}>
-      <ShowBebopper />
       <ChangeKey />
+      <ShowBebopper />
       <Reset />
     </View>
   );

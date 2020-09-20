@@ -24,7 +24,7 @@ export const LocalStorageComponent = (props: Props) => {
   const [result, loading] = useLoadSavedKeys();
 
   return (
-    <View>
+    <View style={{ flexDirection: "row" }}>
       {result
         ? result.map((o) => (
             <Button

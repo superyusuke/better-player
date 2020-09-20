@@ -27,5 +27,20 @@ export const addBar = (props: Props): TotalInfo => {
     };
   }
 
+  if (addBarType === "insert") {
+    return {
+      ...totalInfo,
+      barMetaList: [
+        ...list.slice(0, indexOfMe),
+        {
+          duration: 8,
+          noteList: [null, null],
+          chordList: [],
+        },
+        ...list.slice(indexOfMe),
+      ],
+    };
+  }
+
   return totalInfo;
 };

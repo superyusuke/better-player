@@ -86,7 +86,7 @@ type SetBebopperToolOn = {
   };
 };
 
-export type AddBarType = "default";
+export type AddBarType = "default" | "insert";
 
 type AddBar = {
   type: "addBar";

@@ -37,24 +37,28 @@ export const UI = () => {
   return (
     <View style={styles.zero}>
       <BottomSheetComp />
-      <LocalStorageComponent />
-      <ScrollView style={styles.base}>
+      <View style={{ flex: 1 }}>
+        <ScrollView style={styles.base}>
+          <View style={styles.barList}>
+            {state.totalInfo.barMetaList.map((bar, index) => {
+              return (
+                <Bar
+                  musicKey={musicKey}
+                  manipulateMode={false}
+                  bar={bar}
+                  key={index}
+                  barNumber={index + 1}
+                />
+              );
+            })}
+          </View>
+          {state.bebopperTool.show ? <BebopperTool /> : null}
+        </ScrollView>
+      </View>
+      <View style={{ flexDirection: "column" }}>
         <MainInfo />
-        <View style={styles.barList}>
-          {state.totalInfo.barMetaList.map((bar, index) => {
-            return (
-              <Bar
-                musicKey={musicKey}
-                manipulateMode={false}
-                bar={bar}
-                key={index}
-                barNumber={index + 1}
-              />
-            );
-          })}
-        </View>
-        {state.bebopperTool.show ? <BebopperTool /> : null}
-      </ScrollView>
+        <LocalStorageComponent />
+      </View>
     </View>
   );
 };

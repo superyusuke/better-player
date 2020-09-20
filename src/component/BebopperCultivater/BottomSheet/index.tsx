@@ -57,6 +57,21 @@ export const BottomSheetComp = () => {
           }}
         />
         <Button
+          title={"小節を挿入"}
+          onPress={() => {
+            if (bottomSheetRef.current) {
+              setState({
+                type: "addBar",
+                payload: {
+                  indexOfMe: barNumber ?? 0,
+                  addBarType: "insert",
+                },
+              });
+              bottomSheetRef.current.snapTo(0);
+            }
+          }}
+        />
+        <Button
           title={"X"}
           onPress={() => {
             if (bottomSheetRef.current) {
