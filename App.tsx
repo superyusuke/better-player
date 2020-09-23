@@ -11,17 +11,39 @@ if (__DEV__) {
 
 import { BebopperCultivater } from "src/component/BebopperCultivater";
 
-import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
+import { NavigationContainer, RouteProp } from "@react-navigation/native";
+import {
+  createStackNavigator,
+  StackNavigationProp,
+} from "@react-navigation/stack";
 
-const Stack = createStackNavigator();
+export type RootList = {
+  home: undefined;
+  others: undefined;
+};
 
-const Home = (props: any) => {
-  const { navigation } = props;
+const Stack = createStackNavigator<RootList>();
+
+type HomeScreenRouteProp = RouteProp<RootList, "home">;
+
+type HomeScreenNavigationProp = StackNavigationProp<RootList, "home">;
+
+type Props = {
+  route: HomeScreenRouteProp;
+  navigation: HomeScreenNavigationProp;
+};
+
+const Home = (props: Props) => {
+  const { navigation, route } = props;
+
+  console.log(route, "this is route");
 
   return (
     <View style={{ flex: 1 }}>
-      <Button title={"to Other"} onPress={() => navigation.navigate("Other")} />
+      <Button
+        title={"to Other"}
+        onPress={() => navigation.navigate("others")}
+      />
       <BebopperCultivater />
       <StatusBar style="auto" />
     </View>
@@ -33,7 +55,14 @@ const Other = (props: any) => {
 
   return (
     <View>
-      <Button title={"to Home"} onPress={() => navigation.navigate("Home")} />
+      <Button
+        title={"to Home"}
+        onPress={() =>
+          navigation.navigate("home", {
+            superParams: "this is super params",
+          })
+        }
+      />
       <Text>Other ページ</Text>
     </View>
   );
@@ -42,9 +71,13 @@ const Other = (props: any) => {
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Home" component={Home} />
-        <Stack.Screen name="Other" component={Other} />
+      <Stack.Navigator initialRouteName={"home"}>
+        <Stack.Screen
+          name="home"
+          component={Home}
+          options={{ title: "最強のアプリのホーム" }}
+        />
+        <Stack.Screen name="others" component={Other} />
       </Stack.Navigator>
     </NavigationContainer>
   );
