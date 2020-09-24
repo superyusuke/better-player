@@ -7,7 +7,6 @@ import { useContextHook } from "src/component/BebopperCultivater";
 
 import { BottomSheetComp } from "src/component/BebopperCultivater/BottomSheet";
 import { BebopperTool } from "src/component/BebopperCultivater/BebopperTool";
-import { LocalStorageComponent } from "src/component/BebopperCultivater/LocalStorage";
 
 const styles = StyleSheet.create({
   zero: {
@@ -36,12 +35,6 @@ export const UI = () => {
 
   return (
     <View style={styles.zero}>
-      <Button
-        title={"navigation!"}
-        onPress={() => {
-          navigation.navigate("others");
-        }}
-      />
       <BottomSheetComp />
       <View style={{ flex: 1 }}>
         <ScrollView style={styles.base}>
@@ -63,7 +56,6 @@ export const UI = () => {
       </View>
       <View style={{ flexDirection: "column" }}>
         <MainInfo />
-        <LocalStorageComponent />
       </View>
     </View>
   );

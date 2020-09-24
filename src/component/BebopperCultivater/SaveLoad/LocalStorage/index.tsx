@@ -6,7 +6,7 @@ import { useContextHook } from "src/component/BebopperCultivater";
 import { removeOfTargetKey } from "src/model/LocalStorage/basicMethod";
 import { saveTotalInfo, loadTotalInfo } from "src/model/LocalStorage";
 
-import { useLoadSavedKeys } from "src/component/BebopperCultivater/LocalStorage/useLoadSavedKeys";
+import { useLoadSavedKeys } from "src/component/BebopperCultivater/SaveLoad/LocalStorage/useLoadSavedKeys";
 
 type Props = {};
 

@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useContextHook } from "src/component/BebopperCultivater";
 
 import { UI } from "src/component/BebopperCultivater/UI";
+import { SaveLoad } from "src/component/BebopperCultivater/SaveLoad";
 
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Text, View } from "react-native";
@@ -25,6 +26,7 @@ export const Container = () => {
   return (
     <Tab.Navigator initialRouteName={"home"}>
       <Tab.Screen name={"home"} component={UI} />
+      <Tab.Screen name={"Save / Load"} component={SaveLoad} />
       <Tab.Screen name={"settings"} component={DummySettingsPage} />
     </Tab.Navigator>
   );
