@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet, ScrollView } from "react-native";
+import { View, StyleSheet, ScrollView, Button } from "react-native";
 
 import { MainInfo } from "src/component/BebopperCultivater/MainInfo";
 import { Bar } from "src/component/BebopperCultivater/Bar";
@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
 });
 
 export const UI = () => {
-  const { state } = useContextHook();
+  const { state, navigation } = useContextHook();
 
   if (!state.totalInfo) {
     return null;
@@ -36,6 +36,12 @@ export const UI = () => {
 
   return (
     <View style={styles.zero}>
+      <Button
+        title={"navigation!"}
+        onPress={() => {
+          navigation.navigate("others");
+        }}
+      />
       <BottomSheetComp />
       <View style={{ flex: 1 }}>
         <ScrollView style={styles.base}>
