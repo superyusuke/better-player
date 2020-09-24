@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { getSavedAllKeys } from "src/model/LocalStorage";
 
-export const useLoadSavedKeys = (): [string[], string] => {
+export const useLoadSavedKeys = (): [string[], boolean] => {
   const [result, setResult] = useState<string[]>([]);
-  const [loading, setLoading] = useState("false");
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const getAndSetLoadSavedKeys = async () => {
@@ -11,15 +11,20 @@ export const useLoadSavedKeys = (): [string[], string] => {
         const res = await getSavedAllKeys();
 
         if (!res) {
+          setLoading(false);
           return null;
         }
+
+        setLoading(false);
 
         // console.log(json);
         setResult(res);
       } catch (error) {
-        setLoading("null");
+        setLoading(false);
       }
     };
+
+    setLoading(true);
 
     getAndSetLoadSavedKeys();
   }, []);
