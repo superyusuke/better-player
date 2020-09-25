@@ -21,7 +21,7 @@ import BottomSheet from "reanimated-bottom-sheet";
 
 // navigator
 import { RouteProp } from "@react-navigation/native";
-import { StackNavigationProp } from "@react-navigation/stack";
+import { DrawerNavigationProp } from "@react-navigation/drawer";
 import { RootList } from "src/rounting";
 // navigator
 
@@ -32,7 +32,7 @@ type ContextType = {
   setState: Dispatch<Action>;
   fetchedData: TotalInfo;
   bottomSheetRef: BottomSheetRef;
-  navigation: ScreenNavigationProp;
+  navigation: NavigationProp;
 };
 
 const Context = createContext<ContextType>({
@@ -46,7 +46,7 @@ const Context = createContext<ContextType>({
   },
   fetchedData: info,
   bottomSheetRef: (null as unknown) as BottomSheetRef,
-  navigation: (null as unknown) as ScreenNavigationProp,
+  navigation: (null as unknown) as NavigationProp,
 });
 
 export const useContextHook = () => useContext(Context);
@@ -81,11 +81,11 @@ const Provider: FC<Props> = ({ children, route, navigation }) => {
 
 type ScreenRouteProp = RouteProp<RootList, "bebopperCultivater">;
 
-type ScreenNavigationProp = StackNavigationProp<RootList, "bebopperCultivater">;
+type NavigationProp = DrawerNavigationProp<RootList, "bebopperCultivater">;
 
 type Props = {
   route: ScreenRouteProp;
-  navigation: ScreenNavigationProp;
+  navigation: NavigationProp;
 };
 
 export const BebopperCultivater = (props: Props) => {

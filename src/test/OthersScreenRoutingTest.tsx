@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Button, Text } from "react-native";
+import { Button } from "react-native";
 
 import { RootList } from "src/rounting";
 import { RouteProp } from "@react-navigation/native";
@@ -32,8 +32,12 @@ export const Other = (props: Props) => {
 const Test1 = (props: any) => {
   return (
     <Button
-      title={"test1"}
-      onPress={() => props.navigation.navigate("test2")}
+      title={"bebopperCultivater.home goto"}
+      onPress={() =>
+        props.navigation.navigate("bebopperCultivater", {
+          screen: "home",
+        })
+      }
     />
   );
 };

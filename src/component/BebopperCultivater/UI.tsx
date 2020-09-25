@@ -11,6 +11,7 @@ import { BebopperTool } from "src/component/BebopperCultivater/BebopperTool";
 const styles = StyleSheet.create({
   zero: {
     flex: 1,
+    paddingTop: 20,
   },
   base: {
     flex: 1,
