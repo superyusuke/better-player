@@ -1,7 +1,7 @@
 import React from "react";
-import { View, StyleSheet, Text, Button } from "react-native";
+import { View, Text, Button } from "react-native";
 
-import { LocalStorageComponent } from "src/component/BebopperCultivater/SaveLoad/LocalStorage";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { useLoadSavedKeys } from "src/component/BebopperCultivater/SaveLoad/LocalStorage/useLoadSavedKeys";
 import { SetNameAndSave } from "src/component/BebopperCultivater/SaveLoad/SetNameAndSave";
 import { loadTotalInfo } from "src/model/LocalStorage";
@@ -14,14 +14,12 @@ export const SaveLoad = (props: Props) => {
 
   const [savedKeys, loading] = useLoadSavedKeys();
 
-  const { state, setState } = useContextHook();
+  const { setState } = useContextHook();
 
   return (
-    <View>
+    <SafeAreaView>
       <Text>SaveLoad</Text>
       <SetNameAndSave />
-      {/*<LocalStorageComponent />*/}
-
       {savedKeys.map((o, index) => {
         return (
           <View>
@@ -43,6 +41,6 @@ export const SaveLoad = (props: Props) => {
           </View>
         );
       })}
-    </View>
+    </SafeAreaView>
   );
 };

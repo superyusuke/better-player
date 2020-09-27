@@ -1,5 +1,7 @@
 import React from "react";
-import { View, StyleSheet, ScrollView, Button } from "react-native";
+import { View, StyleSheet, ScrollView } from "react-native";
+
+import { SafeAreaView } from "react-native-safe-area-context";
 
 import { MainInfo } from "src/component/BebopperCultivater/MainInfo";
 import { Bar } from "src/component/BebopperCultivater/Bar";
@@ -11,7 +13,6 @@ import { BebopperTool } from "src/component/BebopperCultivater/BebopperTool";
 const styles = StyleSheet.create({
   zero: {
     flex: 1,
-    paddingTop: 20,
   },
   base: {
     flex: 1,
@@ -35,7 +36,7 @@ export const UI = () => {
   const musicKey = state.totalInfo.key;
 
   return (
-    <View style={styles.zero}>
+    <SafeAreaView style={styles.zero}>
       <BottomSheetComp />
       <View style={{ flex: 1 }}>
         <ScrollView style={styles.base}>
@@ -58,6 +59,6 @@ export const UI = () => {
       <View style={{ flexDirection: "column" }}>
         <MainInfo />
       </View>
-    </View>
+    </SafeAreaView>
   );
 };
