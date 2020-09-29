@@ -3,10 +3,12 @@ import { View, TextInput, Text, Button } from "react-native";
 import { saveTotalInfo } from "src/model/LocalStorage";
 import { useContextHook } from "src/component/BebopperCultivater";
 
-type Props = {};
+type Props = {
+  getAndSet: () => Promise<void>;
+};
 
 export const SetNameAndSave = (props: Props) => {
-  const {} = props;
+  const { getAndSet } = props;
 
   const [textValue, setTextVale] = useState("");
 
@@ -32,6 +34,8 @@ export const SetNameAndSave = (props: Props) => {
             saveKey: textValue,
             totalInfo: dataToSave,
           });
+          await getAndSet();
+          setTextVale("");
         }}
       />
       <Text>SetNameAndSave</Text>
