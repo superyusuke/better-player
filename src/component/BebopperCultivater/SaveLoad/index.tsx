@@ -34,8 +34,8 @@ export const SaveLoad = (props: Props) => {
       <SetNameAndSave getAndSet={getAndSet} />
       {savedKeys.map((o, index) => {
         return (
-          <View>
-            <Text key={index}>{o}</Text>
+          <View key={index}>
+            <Text>{o}</Text>
             <Button
               key={o}
               title={`load ${o}`}
