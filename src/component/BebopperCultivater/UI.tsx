@@ -38,6 +38,9 @@ export const UI = () => {
   return (
     <SafeAreaView style={styles.zero}>
       <BottomSheetComp />
+      <View style={{ flexDirection: "column" }}>
+        <MainInfo />
+      </View>
       <View style={{ flex: 1 }}>
         <ScrollView style={styles.base}>
           <View style={styles.barList}>
@@ -55,9 +58,6 @@ export const UI = () => {
           </View>
           {state.bebopperTool.show ? <BebopperTool /> : null}
         </ScrollView>
-      </View>
-      <View style={{ flexDirection: "column" }}>
-        <MainInfo />
       </View>
     </SafeAreaView>
   );

@@ -1,9 +1,10 @@
 import React from "react";
-import { Text, View, Button } from "react-native";
+import { View, Button } from "react-native";
 import BottomSheet from "reanimated-bottom-sheet";
 import { useContextHook } from "src/component/BebopperCultivater";
 import { State } from "src/component/BebopperCultivater/reducer";
 import { Bar } from "src/component/BebopperCultivater/Bar";
+import { ManipulateBar } from "src/component/BebopperCultivater/BottomSheet/ManipulateBar";
 
 const convertToBarInfo = (state: State) => {
   const { totalInfo, selected } = state;
@@ -41,44 +42,21 @@ export const BottomSheetComp = () => {
           height: "100%",
         }}
       >
-        <Button
-          title={"この小節を削除"}
-          onPress={() => {
-            if (bottomSheetRef.current) {
-              setState({
-                type: "deleteBar",
-                payload: {
-                  indexOfMe: barNumber ?? 0,
-                  deleteBarType: "me",
-                },
-              });
-              bottomSheetRef.current.snapTo(0);
-            }
-          }}
-        />
-        <Button
-          title={"小節を挿入"}
-          onPress={() => {
-            if (bottomSheetRef.current) {
-              setState({
-                type: "addBar",
-                payload: {
-                  indexOfMe: barNumber ?? 0,
-                  addBarType: "insert",
-                },
-              });
-              bottomSheetRef.current.snapTo(0);
-            }
-          }}
-        />
-        <Button
-          title={"X"}
-          onPress={() => {
-            if (bottomSheetRef.current) {
-              bottomSheetRef.current.snapTo(0);
-            }
-          }}
-        />
+        <View style={{ flexDirection: "row" }}>
+          <ManipulateBar
+            barNumber={barNumber}
+            bottomSheetRef={bottomSheetRef}
+            setState={setState}
+          />
+          <Button
+            title={"X"}
+            onPress={() => {
+              if (bottomSheetRef.current) {
+                bottomSheetRef.current.snapTo(0);
+              }
+            }}
+          />
+        </View>
         {barNumber ? (
           <Bar
             barNumber={barNumber}

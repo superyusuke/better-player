@@ -25,7 +25,7 @@ import { DrawerNavigationProp } from "@react-navigation/drawer";
 import { RootList } from "src/rounting";
 // navigator
 
-type BottomSheetRef = MutableRefObject<BottomSheet | null>;
+export type BottomSheetRef = MutableRefObject<BottomSheet | null>;
 
 type ContextType = {
   state: State;
