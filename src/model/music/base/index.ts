@@ -139,8 +139,8 @@ export type NoteMapped = {
 };
 
 export type ChordMeta = {
-  number: number;
-  accidental: number;
+  noteNumber: NoteNumber;
+  accidentalNumber: AccidentalNumber;
   quality: string;
 };
 

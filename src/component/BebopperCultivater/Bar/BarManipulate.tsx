@@ -2,6 +2,7 @@ import React from "react";
 import { View, StyleSheet } from "react-native";
 import RNPickerSelect from "react-native-picker-select";
 import { Note } from "src/component/BebopperCultivater/Note";
+import { Chord } from "src/component/BebopperCultivater/Chord";
 import { useContextHook } from "src/component/BebopperCultivater";
 
 import { BarMeta, Key } from "src/model/music/base";
@@ -27,7 +28,7 @@ const styles = StyleSheet.create({
 export const BarManipulate = (props: Props) => {
   const { setState } = useContextHook();
   const { bar, barNumber, musicKey } = props;
-  const { noteList, duration } = bar;
+  const { noteList, duration, chordList } = bar;
 
   return (
     <View style={styles.wrapper}>
@@ -57,17 +58,36 @@ export const BarManipulate = (props: Props) => {
           { label: "16", value: 16 },
         ]}
       />
-      <View style={styles.bar}>
-        {noteList.map((note, i) => (
-          <Note
-            note={note}
-            key={i}
-            barIndex={barNumber}
-            noteIndex={i + 1}
-            manipulateMode={true}
-            musicKey={musicKey}
-          />
-        ))}
+      <View style={{ flexDirection: "column" }}>
+        <View style={styles.bar}>
+          {noteList.map((note, i) => (
+            <Note
+              note={note}
+              key={i}
+              barIndex={barNumber}
+              noteIndex={i + 1}
+              manipulateMode={true}
+              musicKey={musicKey}
+            />
+          ))}
+        </View>
+        <View
+          style={{
+            flexDirection: "row",
+            backgroundColor: "red",
+          }}
+        >
+          {chordList.map((chord, i) => (
+            <Chord
+              chord={chord}
+              key={i}
+              barIndex={barNumber}
+              noteIndex={i + 1}
+              manipulateMode={true}
+              musicKey={musicKey}
+            />
+          ))}
+        </View>
       </View>
     </View>
   );

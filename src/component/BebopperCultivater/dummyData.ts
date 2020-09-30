@@ -5,7 +5,18 @@ export const info: TotalInfo = {
   barMetaList: [
     {
       duration: 8,
-      chordList: [],
+      chordList: [
+        {
+          accidentalNumber: 0,
+          noteNumber: 4,
+          quality: "M9",
+        },
+        {
+          accidentalNumber: 0,
+          noteNumber: 5,
+          quality: "7b13",
+        },
+      ],
       noteList: [
         {
           noteNumber: 1,
