@@ -1,4 +1,9 @@
-import { TotalInfo, NoteNumber, BarListItem } from "src/model/music/base";
+import {
+  TotalInfo,
+  NoteNumber,
+  BarListItem,
+  BarMeta,
+} from "src/model/music/base";
 
 type ChangeNote = {
   indexToChange: number;
@@ -75,22 +80,23 @@ export const setNoteNumberOfTargetNoteIndexOfTargetBar = (
 
   return {
     ...totalInfo,
-    barMetaList: totalInfo.barMetaList.map((bar, index) => {
-      if (index + 1 === targetBarIndex) {
-        const changedNoteList = changeNote({
-          indexToChange: targetNoteIndex,
-          barList: bar.list,
-          noteNumberToChange: noteNumber,
-        });
+    barMetaList: totalInfo.barMetaList.map(
+      (bar, index): BarMeta => {
+        if (index + 1 === targetBarIndex) {
+          const changedNoteList = changeNote({
+            indexToChange: targetNoteIndex,
+            barList: bar.list,
+            noteNumberToChange: noteNumber,
+          });
 
-        // fixme ここエラーでないのはなぜ
-        return {
-          ...bar,
-          list: changedNoteList,
-        };
+          return {
+            ...bar,
+            list: changedNoteList,
+          };
+        }
+
+        return bar;
       }
-
-      return bar;
-    }),
+    ),
   };
 };
