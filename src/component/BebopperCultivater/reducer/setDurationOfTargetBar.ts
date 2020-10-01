@@ -1,4 +1,4 @@
-import { TotalInfo, Duration, NoteMetaList } from "src/model/music/base";
+import { TotalInfo, Duration, BarListItem } from "src/model/music/base";
 
 type DurationToBlockNumber = {
   duration: Duration;
@@ -24,7 +24,8 @@ const durationToBlockNumber = (props: DurationToBlockNumber) => {
 
 type AddLackingArray = {
   duration: Duration;
-  noteList: NoteMetaList;
+  // fixme 使ってないので適当
+  noteList: any;
 };
 
 // 長かったり少なかったら修正するようにしないといけない。
@@ -40,16 +41,15 @@ const lengthDifference = (props: AddLackingArray): number => {
 
 type MakeAppropriateArray = {
   duration: Duration;
-  noteList: NoteMetaList;
 };
 
-const makeAppropriateArray = (props: MakeAppropriateArray): NoteMetaList => {
-  const { duration, noteList } = props;
+const makeAppropriateArray = (props: MakeAppropriateArray): BarListItem[] => {
+  const { duration } = props;
 
-  return Array.from(
-    { length: durationToBlockNumber({ duration }) },
-    () => null
-  );
+  return Array.from({ length: durationToBlockNumber({ duration }) }, () => ({
+    note: null,
+    chord: null,
+  }));
 };
 
 type Props = {
@@ -67,11 +67,7 @@ export const setDurationOfTargetBar = (props: Props): TotalInfo => {
       if (index + 1 === targetBar) {
         return {
           duration: duration,
-          noteList: makeAppropriateArray({
-            duration,
-            noteList: bar.noteList,
-          }),
-          chordList: bar.chordList,
+          list: makeAppropriateArray({ duration }),
         };
       }
 

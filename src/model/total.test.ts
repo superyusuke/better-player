@@ -20,17 +20,18 @@ describe("aa", () => {
       barMetaList: [
         {
           duration: 8,
-          chordList: [],
-          noteList: [
+          list: [
             {
-              noteNumber: 1,
-              octaveNumber: 0,
-              accidentalNumber: 1,
-            },
-            {
-              noteNumber: 2,
-              octaveNumber: 0,
-              accidentalNumber: 1,
+              note: {
+                accidentalNumber: 0,
+                noteNumber: 1,
+                octaveNumber: 0,
+              },
+              chord: {
+                noteNumber: 2,
+                accidentalNumber: 0,
+                quality: "M7",
+              },
             },
           ],
         },

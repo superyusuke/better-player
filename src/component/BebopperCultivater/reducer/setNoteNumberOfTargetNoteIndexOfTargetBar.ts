@@ -1,33 +1,64 @@
-import { TotalInfo, NoteNumber, NoteMetaList } from "src/model/music/base";
+import { TotalInfo, NoteNumber, BarListItem } from "src/model/music/base";
 
 type ChangeNote = {
   indexToChange: number;
   noteNumberToChange: NoteNumber;
-  noteList: NoteMetaList;
+  barList: BarListItem[];
 };
 
-const changeNote = (props: ChangeNote): NoteMetaList => {
-  const { noteNumberToChange, noteList, indexToChange } = props;
-  return noteList.map((note, index) => {
+const changeNote = (props: ChangeNote): BarListItem[] => {
+  const { noteNumberToChange, barList, indexToChange } = props;
+  return barList.map((barListItem, index) => {
     if (index + 1 === indexToChange) {
       // note 情報が null の場合
-      if (note === null) {
+      if (barListItem.note === null) {
         return {
-          octaveNumber: 0,
-          accidentalNumber: 0,
-          noteNumber: noteNumberToChange,
+          note: {
+            octaveNumber: 0,
+            accidentalNumber: 0,
+            noteNumber: noteNumberToChange,
+          },
+          chord: {
+            quality: null,
+            accidentalNumber: 0,
+            noteNumber: 1,
+          },
         };
       }
 
       // 既存の note 情報が存在する場合
       return {
-        ...note,
-        noteNumber: noteNumberToChange,
+        ...barListItem,
+        note: {
+          ...barListItem.note,
+          noteNumber: noteNumberToChange,
+        },
       };
     }
 
-    return note;
+    return barListItem;
   });
+
+  // if (index + 1 === indexToChange) {
+  //   // note 情報が null の場合
+  //   if (barListItem.note === null) {
+  //     return barListItem
+  //
+  //     return {
+  //       octaveNumber: 0,
+  //       accidentalNumber: 0,
+  //       noteNumber: noteNumberToChange,
+  //     };
+  //   }
+  //
+  //   // 既存の note 情報が存在する場合
+  //   return {
+  //     ...barListItem.note,
+  //     noteNumber: noteNumberToChange,
+  //   };
+  // }
+  //
+  // return barListItem.note;
 };
 
 type Props = {
@@ -50,7 +81,7 @@ export const setNoteNumberOfTargetNoteIndexOfTargetBar = (
           ...bar,
           noteList: changeNote({
             indexToChange: targetNoteIndex,
-            noteList: bar.noteList,
+            barList: bar.list,
             noteNumberToChange: noteNumber,
           }),
         };

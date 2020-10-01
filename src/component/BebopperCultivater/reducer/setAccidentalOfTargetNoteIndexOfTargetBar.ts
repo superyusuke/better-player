@@ -1,32 +1,34 @@
-import {
-  TotalInfo,
-  NoteMetaList,
-  AccidentalNumber,
-} from "src/model/music/base";
+import { TotalInfo, AccidentalNumber, BarListItem } from "src/model/music/base";
 
 type ChangeNote = {
   indexToChange: number;
   accidentalNumberToChange: AccidentalNumber;
-  noteList: NoteMetaList;
+  barList: BarListItem[];
 };
 
-const changeAccidentalNumber = (props: ChangeNote): NoteMetaList => {
-  const { accidentalNumberToChange, noteList, indexToChange } = props;
-  return noteList.map((note, index) => {
+const changeAccidentalNumber = (props: ChangeNote): BarListItem[] => {
+  const { accidentalNumberToChange, barList, indexToChange } = props;
+  return barList.map((barListItem, index) => {
     if (index + 1 === indexToChange) {
-      // note 情報が null の場合
-      if (note === null) {
-        return null;
+      // barListItem 情報が null の場合
+      if (barListItem.note === null) {
+        return {
+          note: null,
+          chord: null,
+        };
       }
 
-      // 既存の note 情報が存在する場合
+      // 既存の barListItem 情報が存在する場合
       return {
-        ...note,
-        accidentalNumber: accidentalNumberToChange,
+        ...barListItem,
+        note: {
+          ...barListItem.note,
+          accidentalNumber: accidentalNumberToChange,
+        },
       };
     }
 
-    return note;
+    return barListItem;
   });
 };
 
@@ -53,9 +55,9 @@ export const setAccidentalOfTargetNoteIndexOfTargetBar = (
       if (index + 1 === targetBarIndex) {
         return {
           ...bar,
-          noteList: changeAccidentalNumber({
+          barListItemList: changeAccidentalNumber({
             indexToChange: targetNoteIndex,
-            noteList: bar.noteList,
+            barList: bar.list,
             accidentalNumberToChange: accidentalNumber,
           }),
         };

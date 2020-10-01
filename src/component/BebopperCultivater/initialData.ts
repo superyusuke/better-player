@@ -5,39 +5,12 @@ export const initialData: TotalInfo = {
   barMetaList: [
     {
       duration: 8,
-      chordList: [],
-      noteList: [null, null],
-    },
-    {
-      duration: 8,
-      chordList: [],
-      noteList: [null, null],
-    },
-    {
-      duration: 8,
-      chordList: [],
-      noteList: [null, null],
-    },
-
-    {
-      duration: 8,
-      chordList: [],
-      noteList: [null, null],
-    },
-    {
-      duration: 8,
-      chordList: [],
-      noteList: [null, null],
-    },
-    {
-      duration: 8,
-      chordList: [],
-      noteList: [null, null],
-    },
-    {
-      duration: 8,
-      chordList: [],
-      noteList: [null, null],
+      list: [
+        {
+          note: null,
+          chord: null,
+        },
+      ],
     },
   ],
 };

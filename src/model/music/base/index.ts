@@ -141,17 +141,21 @@ export type NoteMapped = {
 export type ChordMeta = {
   noteNumber: NoteNumber;
   accidentalNumber: AccidentalNumber;
-  quality: string;
+  quality: string | null;
 };
 
 export type ChordMetaList = (ChordMeta | null)[];
 
 export type Duration = 4 | 8 | 16 | 6;
 
+export type BarListItem = {
+  note: NoteMeta | null;
+  chord: ChordMeta | null;
+};
+
 export type BarMeta = {
   duration: Duration;
-  noteList: NoteMetaList;
-  chordList: ChordMetaList;
+  list: BarListItem[];
 };
 
 export type TotalInfo = {

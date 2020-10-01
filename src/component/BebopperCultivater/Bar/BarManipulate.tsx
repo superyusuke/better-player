@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
 export const BarManipulate = (props: Props) => {
   const { setState } = useContextHook();
   const { bar, barNumber, musicKey } = props;
-  const { noteList, duration, chordList } = bar;
+  const { list, duration } = bar;
 
   return (
     <View style={styles.wrapper}>
@@ -60,9 +60,9 @@ export const BarManipulate = (props: Props) => {
       />
       <View style={{ flexDirection: "column" }}>
         <View style={styles.bar}>
-          {noteList.map((note, i) => (
+          {list.map((listItem, i) => (
             <Note
-              note={note}
+              note={listItem.note}
               key={i}
               barIndex={barNumber}
               noteIndex={i + 1}
@@ -77,9 +77,9 @@ export const BarManipulate = (props: Props) => {
             backgroundColor: "red",
           }}
         >
-          {chordList.map((chord, i) => (
+          {list.map((listItem, i) => (
             <Chord
-              chord={chord}
+              chord={listItem.chord}
               key={i}
               barIndex={barNumber}
               noteIndex={i + 1}

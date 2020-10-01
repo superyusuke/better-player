@@ -19,8 +19,12 @@ export const addBar = (props: Props): TotalInfo => {
         ...list.slice(0, indexOfMe),
         {
           duration: 8,
-          noteList: [null, null],
-          chordList: [],
+          list: [
+            {
+              chord: null,
+              note: null,
+            },
+          ],
         },
         ...list.slice(indexOfMe),
       ],
@@ -34,8 +38,12 @@ export const addBar = (props: Props): TotalInfo => {
         ...list.slice(0, indexOfMe),
         {
           duration: 8,
-          noteList: [null, null],
-          chordList: [],
+          list: [
+            {
+              chord: null,
+              note: null,
+            },
+          ],
         },
         ...list.slice(indexOfMe),
       ],

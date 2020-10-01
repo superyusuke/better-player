@@ -15,7 +15,7 @@ type Props = {
 export const BarDisplay = (props: Props) => {
   const { setState, bottomSheetRef, state } = useContextHook();
   const { bar, barNumber, musicKey } = props;
-  const { noteList, duration } = bar;
+  const { list, duration } = bar;
 
   const isSelected = state.selected ? state.selected.bar === barNumber : false;
   const totalBarLength = state.totalInfo?.barMetaList.length;
@@ -56,10 +56,10 @@ export const BarDisplay = (props: Props) => {
           <AddBar barNumber={barNumber} totalBarLength={totalBarLength ?? 0} />
         </View>
         <View style={styles.bar}>
-          {noteList.map((note, i) => (
+          {list.map((listItem, i) => (
             <Note
               musicKey={musicKey}
-              note={note}
+              note={listItem.note}
               key={i}
               barIndex={barNumber}
               noteIndex={i + 1}
