@@ -24,6 +24,10 @@ export const addBar = (props: Props): TotalInfo => {
               chord: null,
               note: null,
             },
+            {
+              chord: null,
+              note: null,
+            },
           ],
         },
         ...list.slice(indexOfMe),
