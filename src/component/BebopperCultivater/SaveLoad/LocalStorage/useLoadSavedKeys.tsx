@@ -17,7 +17,6 @@ export const useLoadSavedKeys = (): [string[], boolean] => {
 
         setLoading(false);
 
-        // console.log(json);
         setResult(res);
       } catch (error) {
         setLoading(false);

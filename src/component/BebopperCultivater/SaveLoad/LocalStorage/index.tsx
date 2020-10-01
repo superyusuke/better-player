@@ -69,8 +69,6 @@ export const LocalStorageComponent = (props: Props) => {
       {/*      key: "key1",*/}
       {/*    });*/}
 
-      {/*    console.log(res);*/}
-
       {/*    alert(res.name);*/}
       {/*  }}*/}
       {/*/>*/}

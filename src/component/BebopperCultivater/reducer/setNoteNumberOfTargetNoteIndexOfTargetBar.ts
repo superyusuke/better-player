@@ -77,13 +77,16 @@ export const setNoteNumberOfTargetNoteIndexOfTargetBar = (
     ...totalInfo,
     barMetaList: totalInfo.barMetaList.map((bar, index) => {
       if (index + 1 === targetBarIndex) {
+        const changedNoteList = changeNote({
+          indexToChange: targetNoteIndex,
+          barList: bar.list,
+          noteNumberToChange: noteNumber,
+        });
+
+        // fixme ここエラーでないのはなぜ
         return {
           ...bar,
-          noteList: changeNote({
-            indexToChange: targetNoteIndex,
-            barList: bar.list,
-            noteNumberToChange: noteNumber,
-          }),
+          list: changedNoteList,
         };
       }
 
