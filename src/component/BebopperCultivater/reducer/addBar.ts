@@ -39,7 +39,7 @@ export const addBar = (props: Props): TotalInfo => {
     return {
       ...totalInfo,
       barMetaList: [
-        ...list.slice(0, indexOfMe),
+        ...list.slice(0, indexOfMe - 1),
         {
           duration: 8,
           list: [
@@ -49,7 +49,7 @@ export const addBar = (props: Props): TotalInfo => {
             },
           ],
         },
-        ...list.slice(indexOfMe),
+        ...list.slice(indexOfMe - 1),
       ],
     };
   }
