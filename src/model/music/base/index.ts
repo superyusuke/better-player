@@ -122,6 +122,37 @@ export const noteNumberListForPicker: PickerSelectProps["items"] = noteNumberLis
   }
 );
 
+export const noteNumberNumeralList = [
+  {
+    noteNumber: 1,
+    numeral: "Ⅰ",
+  },
+  {
+    noteNumber: 2,
+    numeral: "Ⅱ",
+  },
+  {
+    noteNumber: 3,
+    numeral: "Ⅲ",
+  },
+  {
+    noteNumber: 4,
+    numeral: "Ⅳ",
+  },
+  {
+    noteNumber: 5,
+    numeral: "Ⅴ",
+  },
+  {
+    noteNumber: 6,
+    numeral: "Ⅵ",
+  },
+  {
+    noteNumber: 7,
+    numeral: "Ⅶ",
+  },
+];
+
 export type OctaveNumber = -1 | 0 | 1;
 export const octaveNumber = -1 | 0 | 1;
 

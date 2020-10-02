@@ -14,7 +14,7 @@ export const info: TotalInfo = {
           },
           chord: {
             noteNumber: 2,
-            accidentalNumber: 0,
+            accidentalNumber: 1,
             quality: "M7",
           },
         },

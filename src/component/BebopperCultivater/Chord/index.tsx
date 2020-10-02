@@ -1,5 +1,6 @@
 import React from "react";
 import { ChordManipulate } from "src/component/BebopperCultivater/Chord/Manipulate";
+import { ChordDisplay } from "src/component/BebopperCultivater/Chord/Display";
 import { Key, ChordMeta } from "src/model/music/base";
 
 type Props = {
@@ -24,8 +25,6 @@ export const Chord = (props: Props) => {
   }
 
   return (
-    <ChordManipulate barIndex={barIndex} chord={chord} noteIndex={noteIndex} />
+    <ChordDisplay barIndex={barIndex} chord={chord} noteIndex={noteIndex} />
   );
-
-  // return <NoteDisplay note={note} musicKey={musicKey} />;
 };

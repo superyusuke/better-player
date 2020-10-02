@@ -1,6 +1,7 @@
 import React from "react";
 import { View, StyleSheet, TouchableOpacity, Text } from "react-native";
 import { Note } from "src/component/BebopperCultivater/Note";
+import { Chord } from "src/component/BebopperCultivater/Chord";
 import { AddBar } from "src/component/BebopperCultivater/Bar/AddBar";
 import { useContextHook } from "src/component/BebopperCultivater";
 
@@ -55,16 +56,33 @@ export const BarDisplay = (props: Props) => {
           <Text>{duration}</Text>
           <AddBar barNumber={barNumber} totalBarLength={totalBarLength ?? 0} />
         </View>
-        <View style={styles.bar}>
+        <View
+          style={{
+            flexDirection: "row",
+            borderRightWidth: borderRightWidth,
+            borderColor: "blue",
+            backgroundColor: isSelected ? "red" : undefined,
+          }}
+        >
           {list.map((listItem, i) => (
-            <Note
-              musicKey={musicKey}
-              note={listItem.note}
-              key={i}
-              barIndex={barNumber}
-              noteIndex={i + 1}
-              manipulateMode={false}
-            />
+            <View style={{ flex: 1 }}>
+              <Note
+                musicKey={musicKey}
+                note={listItem.note}
+                key={i}
+                barIndex={barNumber}
+                noteIndex={i + 1}
+                manipulateMode={false}
+              />
+              <Chord
+                musicKey={musicKey}
+                chord={listItem.chord}
+                key={i}
+                barIndex={barNumber}
+                noteIndex={i + 1}
+                manipulateMode={false}
+              />
+            </View>
           ))}
         </View>
       </TouchableOpacity>

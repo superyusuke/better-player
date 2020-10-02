@@ -1,16 +1,7 @@
 import React from "react";
-import { View, StyleSheet, Text } from "react-native";
+import { View, Text } from "react-native";
 
 import { accidentalList, AccidentalNumber } from "src/model/music/base";
-
-const styles = StyleSheet.create({
-  wrapper: {
-    justifyContent: "center",
-    alignItems: "center",
-    minWidth: 10,
-    minHeight: 20,
-  },
-});
 
 type Props = {
   accidentalNumber: AccidentalNumber | null;
@@ -23,8 +14,10 @@ export const Accidental = (props: Props) => {
     (o) => o.value === accidentalNumber
   );
 
+  console.log(accidentalToShow);
+
   return (
-    <View style={styles.wrapper}>
+    <View style={{}}>
       <Text>{accidentalToShow?.inputLabel || accidentalToShow?.label}</Text>
     </View>
   );
