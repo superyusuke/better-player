@@ -44,10 +44,10 @@ export const NoteNumber = (props: Props) => {
             return;
           }
           setState({
-            type: "setNoteNumberOfTargetNoteIndexOfTargetBar",
+            type: "setNumeralOfTargetCellOfTargetBar",
             payload: {
-              noteNumber: value,
-              targetNoteIndex: noteIndex,
+              numeral: value,
+              targetCellIndex: noteIndex,
               targetBarIndex: barIndex,
             },
           });

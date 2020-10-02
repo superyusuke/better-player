@@ -10,6 +10,7 @@ import { setDurationOfTargetBar } from "src/component/BebopperCultivater/reducer
 import { reset } from "src/component/BebopperCultivater/reducer/reset";
 import { setNoteNumberOfTargetNoteIndexOfTargetBar } from "src/component/BebopperCultivater/reducer/setNoteNumberOfTargetNoteIndexOfTargetBar";
 import { setAccidentalOfTargetNoteIndexOfTargetBar } from "src/component/BebopperCultivater/reducer/setAccidentalOfTargetNoteIndexOfTargetBar";
+import { setNumeralOfTargetCellOfTargetBar } from "src/component/BebopperCultivater/reducer/setNumeralOfTargetCellOfTargetBar";
 import { addBar } from "src/component/BebopperCultivater/reducer/addBar";
 import { deleteBar } from "src/component/BebopperCultivater/reducer/deleteBar";
 
@@ -106,6 +107,15 @@ type DeleteBar = {
   };
 };
 
+type SetNumeralOfTargetCellOfTargetBar = {
+  type: "setNumeralOfTargetCellOfTargetBar";
+  payload: {
+    numeral: NoteNumber;
+    targetCellIndex: number;
+    targetBarIndex: number;
+  };
+};
+
 export type Action =
   | TestAction
   | SetInitialFetchedData
@@ -117,9 +127,33 @@ export type Action =
   | ChangeKey
   | SetBebopperToolOn
   | AddBar
-  | DeleteBar;
+  | DeleteBar
+  | SetNumeralOfTargetCellOfTargetBar;
 
 export const makeReducer = () => (state: State, action: Action): State => {
+  if (action.type === "setNumeralOfTargetCellOfTargetBar") {
+    if (!state.totalInfo) {
+      return {
+        ...state,
+      };
+    }
+
+    const { targetCellIndex, numeral, targetBarIndex } = action.payload;
+
+    return {
+      ...state,
+      totalInfo: {
+        ...state.totalInfo,
+        barMetaList: setNumeralOfTargetCellOfTargetBar({
+          barMetaList: state.totalInfo.barMetaList,
+          targetBarIndex,
+          numeral,
+          targetCellIndex,
+        }),
+      },
+    };
+  }
+
   if (action.type === "deleteBar") {
     if (!state.totalInfo) {
       return {
