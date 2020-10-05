@@ -17,5 +17,14 @@ export const NoteNumber = (props: Props) => {
     (o) => o.noteNumber === noteNumber
   );
 
-  return <Text>{numeralToShow?.numeral}</Text>;
+  return (
+    <Text
+      style={{
+        fontSize: 20,
+        fontWeight: "bold",
+      }}
+    >
+      {numeralToShow?.numeral}
+    </Text>
+  );
 };

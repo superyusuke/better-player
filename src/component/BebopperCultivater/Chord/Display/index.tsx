@@ -16,6 +16,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    minHeight: 30,
   },
 });
 
@@ -30,8 +31,8 @@ export const ChordDisplay = (props: Props) => {
 
   return (
     <View style={styles.wrapper}>
-      <Accidental accidentalNumber={chord ? chord.accidentalNumber : null} />
       <NoteNumber noteNumber={chord ? chord.noteNumber : null} />
+      <Accidental accidentalNumber={chord ? chord.accidentalNumber : null} />
       <Text>{chord?.quality}</Text>
     </View>
   );

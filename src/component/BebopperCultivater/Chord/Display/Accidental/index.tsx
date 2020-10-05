@@ -18,7 +18,13 @@ export const Accidental = (props: Props) => {
 
   return (
     <View style={{}}>
-      <Text>{accidentalToShow?.inputLabel || accidentalToShow?.label}</Text>
+      <Text
+        style={{
+          justifyContent: "flex-start",
+        }}
+      >
+        {accidentalToShow?.inputLabel || accidentalToShow?.label}
+      </Text>
     </View>
   );
 };
