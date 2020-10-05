@@ -11,6 +11,7 @@ import { reset } from "src/component/BebopperCultivater/reducer/reset";
 import { setNoteNumberOfTargetNoteIndexOfTargetBar } from "src/component/BebopperCultivater/reducer/setNoteNumberOfTargetNoteIndexOfTargetBar";
 import { setAccidentalOfTargetNoteIndexOfTargetBar } from "src/component/BebopperCultivater/reducer/setAccidentalOfTargetNoteIndexOfTargetBar";
 import { setNumeralOfTargetCellOfTargetBar } from "src/component/BebopperCultivater/reducer/setNumeralOfTargetCellOfTargetBar";
+import { setQualityOfTargetCellOfTargetBar } from "src/component/BebopperCultivater/reducer/setQualityOfTargetCellOfTargetBar";
 import { addBar } from "src/component/BebopperCultivater/reducer/addBar";
 import { deleteBar } from "src/component/BebopperCultivater/reducer/deleteBar";
 
@@ -116,6 +117,15 @@ type SetNumeralOfTargetCellOfTargetBar = {
   };
 };
 
+type SetQualityOfTargetCellOfTargetBar = {
+  type: "setQualityOfTargetCellOfTargetBar";
+  payload: {
+    quality: string;
+    targetCellIndex: number;
+    targetBarIndex: number;
+  };
+};
+
 export type Action =
   | TestAction
   | SetInitialFetchedData
@@ -128,9 +138,33 @@ export type Action =
   | SetBebopperToolOn
   | AddBar
   | DeleteBar
-  | SetNumeralOfTargetCellOfTargetBar;
+  | SetNumeralOfTargetCellOfTargetBar
+  | SetQualityOfTargetCellOfTargetBar;
 
 export const makeReducer = () => (state: State, action: Action): State => {
+  if (action.type === "setQualityOfTargetCellOfTargetBar") {
+    if (!state.totalInfo) {
+      return {
+        ...state,
+      };
+    }
+
+    const { targetCellIndex, quality, targetBarIndex } = action.payload;
+
+    return {
+      ...state,
+      totalInfo: {
+        ...state.totalInfo,
+        barMetaList: setQualityOfTargetCellOfTargetBar({
+          quality,
+          barMetaList: state.totalInfo.barMetaList,
+          targetBarIndex,
+          targetCellIndex,
+        }),
+      },
+    };
+  }
+
   if (action.type === "setNumeralOfTargetCellOfTargetBar") {
     if (!state.totalInfo) {
       return {

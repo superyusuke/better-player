@@ -5,6 +5,7 @@ import { ChordMeta } from "src/model/music/base";
 
 import { NoteNumber } from "src/component/BebopperCultivater/Chord/Manipulate/NoteNumber";
 import { Accidental } from "src/component/BebopperCultivater/Chord/Manipulate/Accidental";
+import { Quality } from "src/component/BebopperCultivater/Chord/Manipulate/Quality";
 
 const styles = StyleSheet.create({
   wrapper: {
@@ -40,7 +41,11 @@ export const ChordManipulate = (props: Props) => {
         barIndex={barIndex}
         noteIndex={noteIndex}
       />
-      <Text>{chord?.quality}</Text>
+      <Quality
+        quality={chord ? chord.quality : null}
+        barIndex={barIndex}
+        noteIndex={noteIndex}
+      />
     </View>
   );
 };

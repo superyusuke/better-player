@@ -30,6 +30,10 @@ type ToNote = {
 const toNote = (props: ToNote) => {
   const { key, accidentalNumber, noteNumber, octaveNumber } = props;
 
+  if (noteNumber === null) {
+    return "";
+  }
+
   const noteInfo: ScaleItem | undefined =
     KEY_LIST[key][accidentalNumberToJustString(accidentalNumber)][
       noteNumber - 1
