@@ -124,6 +124,10 @@ export const noteNumberListForPicker: PickerSelectProps["items"] = noteNumberLis
 
 export const noteNumberNumeralList = [
   {
+    noteNumber: null,
+    numeral: "",
+  },
+  {
     noteNumber: 1,
     numeral: "Ⅰ",
   },
@@ -152,6 +156,22 @@ export const noteNumberNumeralList = [
     numeral: "Ⅶ",
   },
 ];
+
+export const noteNumberNumeralListForPicker: PickerSelectProps["items"] = noteNumberNumeralList.map(
+  (o) => {
+    if (o === null) {
+      return {
+        value: null,
+        label: "-",
+      };
+    }
+
+    return {
+      value: o.noteNumber,
+      label: o.numeral,
+    };
+  }
+);
 
 export type OctaveNumber = -1 | 0 | 1;
 export const octaveNumber = -1 | 0 | 1;

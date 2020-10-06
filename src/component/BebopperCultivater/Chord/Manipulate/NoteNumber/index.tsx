@@ -4,7 +4,7 @@ import RNPickerSelect from "react-native-picker-select";
 
 import {
   NoteNumber as NoteNumberType,
-  noteNumberListForPicker,
+  noteNumberNumeralListForPicker,
 } from "src/model/music/base";
 
 import { useContextHook } from "src/component/BebopperCultivater";
@@ -52,7 +52,7 @@ export const NoteNumber = (props: Props) => {
             },
           });
         }}
-        items={noteNumberListForPicker}
+        items={noteNumberNumeralListForPicker}
       />
     </View>
   );

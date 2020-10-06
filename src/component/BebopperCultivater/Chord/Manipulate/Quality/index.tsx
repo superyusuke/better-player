@@ -24,6 +24,7 @@ export const Quality = (props: Props) => {
   return (
     <View style={styles.wrapper}>
       <TextInput
+        autoCapitalize={"none"}
         style={{ backgroundColor: "yellow", minWidth: 40 }}
         value={quality ?? ""}
         onChangeText={(text) => {
