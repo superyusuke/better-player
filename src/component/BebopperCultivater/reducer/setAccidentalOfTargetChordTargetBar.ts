@@ -62,8 +62,6 @@ export const setAccidentalOfTargetChordTargetBar = (
           accidentalNumberToChange: accidentalNumber,
         });
 
-        console.log(changedNoteList, "list");
-
         return {
           ...bar,
           list: changedNoteList,

@@ -14,8 +14,6 @@ export const Accidental = (props: Props) => {
     (o) => o.value === accidentalNumber
   );
 
-  console.log(accidentalToShow);
-
   return (
     <View style={{}}>
       <Text

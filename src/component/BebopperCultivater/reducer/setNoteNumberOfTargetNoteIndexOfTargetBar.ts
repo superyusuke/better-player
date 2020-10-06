@@ -24,9 +24,9 @@ const changeNote = (props: ChangeNote): BarListItem[] => {
             noteNumber: noteNumberToChange,
           },
           chord: {
-            quality: null,
-            accidentalNumber: 0,
-            noteNumber: 1,
+            quality: barListItem.chord?.quality ?? "",
+            accidentalNumber: barListItem.chord?.accidentalNumber ?? 0,
+            noteNumber: barListItem.chord?.noteNumber ?? null,
           },
         };
       }
