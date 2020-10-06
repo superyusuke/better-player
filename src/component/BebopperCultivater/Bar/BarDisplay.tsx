@@ -77,7 +77,7 @@ export const BarDisplay = (props: Props) => {
               <Chord
                 musicKey={musicKey}
                 chord={listItem.chord}
-                key={i}
+                key={`${i}chord`}
                 barIndex={barNumber}
                 noteIndex={i + 1}
                 manipulateMode={false}

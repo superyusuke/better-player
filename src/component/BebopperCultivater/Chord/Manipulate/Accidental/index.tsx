@@ -39,10 +39,10 @@ export const Accidental = (props: Props) => {
         placeholder={{}}
         onValueChange={(value) => {
           setState({
-            type: "setAccidentalOfTargetNoteIndexOfTargetBar",
+            type: "setAccidentalOfTargetChordIndexOfTargetBar",
             payload: {
               targetBarIndex: barIndex,
-              targetNoteIndex: noteIndex,
+              targetCellIndex: noteIndex,
               accidentalNumber: value,
             },
           });

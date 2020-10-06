@@ -12,6 +12,7 @@ import { setNoteNumberOfTargetNoteIndexOfTargetBar } from "src/component/Beboppe
 import { setAccidentalOfTargetNoteIndexOfTargetBar } from "src/component/BebopperCultivater/reducer/setAccidentalOfTargetNoteIndexOfTargetBar";
 import { setNumeralOfTargetCellOfTargetBar } from "src/component/BebopperCultivater/reducer/setNumeralOfTargetCellOfTargetBar";
 import { setQualityOfTargetCellOfTargetBar } from "src/component/BebopperCultivater/reducer/setQualityOfTargetCellOfTargetBar";
+import { setAccidentalOfTargetChordTargetBar } from "src/component/BebopperCultivater/reducer/setAccidentalOfTargetChordTargetBar";
 import { addBar } from "src/component/BebopperCultivater/reducer/addBar";
 import { deleteBar } from "src/component/BebopperCultivater/reducer/deleteBar";
 
@@ -126,6 +127,15 @@ type SetQualityOfTargetCellOfTargetBar = {
   };
 };
 
+type SetAccidentalOfTargetChordOfTargetBar = {
+  type: "setAccidentalOfTargetChordIndexOfTargetBar";
+  payload: {
+    accidentalNumber: AccidentalNumber;
+    targetCellIndex: number;
+    targetBarIndex: number;
+  };
+};
+
 export type Action =
   | TestAction
   | SetInitialFetchedData
@@ -139,9 +149,37 @@ export type Action =
   | AddBar
   | DeleteBar
   | SetNumeralOfTargetCellOfTargetBar
-  | SetQualityOfTargetCellOfTargetBar;
+  | SetQualityOfTargetCellOfTargetBar
+  | SetAccidentalOfTargetChordOfTargetBar;
 
 export const makeReducer = () => (state: State, action: Action): State => {
+  if (action.type === "setAccidentalOfTargetChordIndexOfTargetBar") {
+    if (!state.totalInfo) {
+      return {
+        ...state,
+      };
+    }
+
+    const {
+      accidentalNumber,
+      targetBarIndex,
+      targetCellIndex,
+    } = action.payload;
+
+    return {
+      ...state,
+      totalInfo: {
+        ...state.totalInfo,
+        barMetaList: setAccidentalOfTargetChordTargetBar({
+          accidentalNumber,
+          barMetaList: state.totalInfo.barMetaList,
+          targetBarIndex,
+          targetCellIndex,
+        }),
+      },
+    };
+  }
+
   if (action.type === "setQualityOfTargetCellOfTargetBar") {
     if (!state.totalInfo) {
       return {
