@@ -28,6 +28,10 @@ export const Quality = (props: Props) => {
         style={{ backgroundColor: "yellow", minWidth: 40 }}
         value={quality ?? ""}
         onChangeText={(text) => {
+          if (text === quality) {
+            return;
+          }
+
           setState({
             type: "setQualityOfTargetCellOfTargetBar",
             payload: {

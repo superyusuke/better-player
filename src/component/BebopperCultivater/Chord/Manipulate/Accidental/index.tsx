@@ -38,6 +38,10 @@ export const Accidental = (props: Props) => {
         }}
         placeholder={{}}
         onValueChange={(value) => {
+          if (value === accidentalNumber) {
+            return;
+          }
+
           setState({
             type: "setAccidentalOfTargetChordIndexOfTargetBar",
             payload: {

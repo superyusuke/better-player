@@ -25,6 +25,8 @@ const convertToBarInfo = (state: State) => {
 export const BottomSheetComp = () => {
   const { bottomSheetRef, state, setState } = useContextHook();
 
+  console.log(state.totalInfo?.barMetaList);
+
   const barInfo = convertToBarInfo(state);
 
   const barNumber = state.selected?.bar;

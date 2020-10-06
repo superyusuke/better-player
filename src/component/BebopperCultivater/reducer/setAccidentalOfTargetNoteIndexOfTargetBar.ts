@@ -19,7 +19,7 @@ const changeAccidentalNumber = (props: ChangeNote): BarListItem[] => {
       }
 
       // 既存の barListItem 情報が存在する場合
-      const newBarlist = {
+      const newBarList = {
         ...barListItem,
         note: {
           ...barListItem.note,
@@ -27,9 +27,9 @@ const changeAccidentalNumber = (props: ChangeNote): BarListItem[] => {
         },
       };
 
-      console.log(newBarlist, "new");
+      console.log(newBarList, "new");
 
-      return newBarlist;
+      return newBarList;
     }
 
     return barListItem;
