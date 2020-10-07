@@ -31,21 +31,23 @@ export const ChordManipulate = (props: Props) => {
 
   return (
     <View style={styles.wrapper}>
-      <Accidental
-        accidentalNumber={chord ? chord.accidentalNumber : null}
-        barIndex={barIndex}
-        noteIndex={noteIndex}
-      />
       <NoteNumber
         noteNumber={chord ? chord.noteNumber : null}
         barIndex={barIndex}
         noteIndex={noteIndex}
       />
-      <Quality
-        quality={chord ? chord.quality : null}
-        barIndex={barIndex}
-        noteIndex={noteIndex}
-      />
+      <View>
+        <Accidental
+          accidentalNumber={chord ? chord.accidentalNumber : null}
+          barIndex={barIndex}
+          noteIndex={noteIndex}
+        />
+        <Quality
+          quality={chord ? chord.quality : null}
+          barIndex={barIndex}
+          noteIndex={noteIndex}
+        />
+      </View>
     </View>
   );
 };

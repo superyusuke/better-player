@@ -9,7 +9,7 @@ import { Accidental } from "src/component/BebopperCultivater/Note/NoteManipulate
 const styles = StyleSheet.create({
   wrapper: {
     borderColor: "blue",
-    flexDirection: "column",
+    flexDirection: "row",
     borderBottomWidth: 1,
     borderLeftWidth: 1,
     borderTopWidth: 1,
@@ -30,13 +30,13 @@ export const NoteManipulate = (props: Props) => {
 
   return (
     <View style={styles.wrapper}>
-      <Accidental
-        accidentalNumber={note ? note.accidentalNumber : null}
+      <NoteNumber
+        noteNumber={note ? note.noteNumber : null}
         barIndex={barIndex}
         noteIndex={noteIndex}
       />
-      <NoteNumber
-        noteNumber={note ? note.noteNumber : null}
+      <Accidental
+        accidentalNumber={note ? note.accidentalNumber : null}
         barIndex={barIndex}
         noteIndex={noteIndex}
       />

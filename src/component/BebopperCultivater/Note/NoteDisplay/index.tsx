@@ -31,8 +31,17 @@ export const NoteDisplay = (props: Props) => {
 
   return (
     <View style={styles.wrapper}>
-      <Accidental accidentalNumber={note ? note.accidentalNumber : null} />
-      <NoteNumber noteNumber={note ? note.noteNumber : null} />
+      <View
+        style={{
+          flexDirection: "row",
+        }}
+      >
+        {note?.accidentalNumber ? (
+          <Accidental accidentalNumber={note.accidentalNumber} />
+        ) : null}
+        <NoteNumber noteNumber={note ? note.noteNumber : null} />
+      </View>
+
       <NoteMapped noteMeta={note} musicKey={musicKey} />
     </View>
   );

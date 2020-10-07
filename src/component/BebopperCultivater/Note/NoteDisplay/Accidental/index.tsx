@@ -7,7 +7,6 @@ const styles = StyleSheet.create({
   wrapper: {
     justifyContent: "center",
     alignItems: "center",
-    minWidth: 10,
     minHeight: 20,
   },
 });
