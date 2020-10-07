@@ -14,11 +14,7 @@ import { convertNoteMetaListToMappedNoteList } from "src/model/music/convert/toN
 // };
 
 describe("aa", () => {
-  it("total", async () => {
-
-
-
-  });
+  it("total", async () => {});
 
   it("is", async () => {
     const note: NoteMeta = {
@@ -28,7 +24,6 @@ describe("aa", () => {
     };
 
     const res = convertNoteMetaToMappedNote({ key: "C", noteMeta: note });
-    console.log(res);
   });
 
   it("2", async () => {
@@ -85,6 +80,5 @@ describe("aa", () => {
       key: "C",
       noteMetaList: noteMetaList,
     });
-    console.log(res);
   });
 });

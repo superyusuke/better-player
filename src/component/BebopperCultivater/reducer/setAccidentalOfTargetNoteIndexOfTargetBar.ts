@@ -27,8 +27,6 @@ const changeAccidentalNumber = (props: ChangeNote): BarListItem[] => {
         },
       };
 
-      console.log(newBarList, "new");
-
       return newBarList;
     }
 
@@ -59,7 +57,7 @@ export const setAccidentalOfTargetNoteIndexOfTargetBar = (
       if (index + 1 === targetBarIndex) {
         return {
           ...bar,
-          barListItemList: changeAccidentalNumber({
+          list: changeAccidentalNumber({
             indexToChange: targetNoteIndex,
             barList: bar.list,
             accidentalNumberToChange: accidentalNumber,

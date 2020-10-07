@@ -79,7 +79,5 @@ describe("aa", () => {
     }
 
     expect(obj).toBe("");
-
-    // console.log(res);
   });
 });

@@ -6,10 +6,16 @@ import { useContextHook } from "src/component/BebopperCultivater";
 type Props = {};
 
 export const ShowBebopper = (props: Props) => {
-  const { setState } = useContextHook();
+  const { setState, state } = useContextHook();
 
   return (
     <View>
+      <Button
+        title={"joutai oshiete"}
+        onPress={() => {
+          console.log(state, "state");
+        }}
+      />
       <Button
         title={"miseru"}
         onPress={() => {

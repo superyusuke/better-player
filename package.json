@@ -6,7 +6,8 @@
     "ios": "expo start --ios",
     "iPad": "expo start --ios",
     "web": "expo start --web",
-    "eject": "expo eject"
+    "eject": "expo eject",
+    "remove-cache": "expo r -c"
   },
   "dependencies": {
     "@react-native-community/async-storage": "^1.11.0",

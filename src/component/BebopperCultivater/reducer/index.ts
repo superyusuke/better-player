@@ -153,8 +153,6 @@ export type Action =
   | SetAccidentalOfTargetChordOfTargetBar;
 
 export const makeReducer = () => (state: State, action: Action): State => {
-  console.log(action.type, "action");
-
   if (action.type === "setAccidentalOfTargetChordIndexOfTargetBar") {
     if (!state.totalInfo) {
       return {

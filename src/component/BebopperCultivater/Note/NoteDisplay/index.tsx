@@ -29,8 +29,6 @@ type Props = {
 export const NoteDisplay = (props: Props) => {
   const { note, musicKey } = props;
 
-  console.log(note, "in note");
-
   return (
     <View style={styles.wrapper}>
       <Accidental accidentalNumber={note ? note.accidentalNumber : null} />
