@@ -60,6 +60,7 @@ export const BarDisplay = (props: Props) => {
           style={{
             flexDirection: "row",
             borderRightWidth: borderRightWidth,
+            borderLeftWidth: 1,
             borderColor: "blue",
             backgroundColor: isSelected ? "red" : undefined,
           }}

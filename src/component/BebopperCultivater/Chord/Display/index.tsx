@@ -9,14 +9,12 @@ import { Accidental } from "src/component/BebopperCultivater/Chord/Display/Accid
 const styles = StyleSheet.create({
   wrapper: {
     borderColor: "blue",
-    flexDirection: "row",
     borderBottomWidth: 1,
-    borderLeftWidth: 1,
     borderTopWidth: 1,
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
     minHeight: 30,
+    position: "relative",
+    justifyContent: "center",
   },
 });
 
@@ -31,9 +29,17 @@ export const ChordDisplay = (props: Props) => {
 
   return (
     <View style={styles.wrapper}>
-      <NoteNumber noteNumber={chord ? chord.noteNumber : null} />
-      <Accidental accidentalNumber={chord ? chord.accidentalNumber : null} />
-      <Text>{chord?.quality}</Text>
+      <View
+        style={{
+          position: "absolute",
+          flexDirection: "row",
+          alignItems: "center",
+        }}
+      >
+        <NoteNumber noteNumber={chord ? chord.noteNumber : null} />
+        <Accidental accidentalNumber={chord ? chord.accidentalNumber : null} />
+        <Text>{chord?.quality}</Text>
+      </View>
     </View>
   );
 };

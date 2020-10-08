@@ -20,5 +20,5 @@ export const Note = (props: Props) => {
     );
   }
 
-  return <NoteDisplay note={note} musicKey={musicKey} />;
+  return <NoteDisplay note={note} musicKey={musicKey} noteIndex={noteIndex} />;
 };
