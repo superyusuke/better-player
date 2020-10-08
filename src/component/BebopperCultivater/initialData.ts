@@ -10,6 +10,10 @@ export const initialData: TotalInfo = {
           note: null,
           chord: null,
         },
+        {
+          note: null,
+          chord: null,
+        },
       ],
     },
   ],
